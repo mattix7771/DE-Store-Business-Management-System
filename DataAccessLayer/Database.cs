@@ -123,4 +123,42 @@ public class Database
 
         Console.WriteLine($"Product with name {name} has been successfully deleted");
     }
+
+    public async Task UpdateProduct<T>(string name, string attibute, T newValue)
+    {
+        if (attibute.ToLower() != "name" && attibute.ToLower() != "price" && attibute.ToLower() != "stock") { throw new FormatException($"{attibute} is not a valid parameter"); }
+
+        var collection = database.GetCollection<ProductModel>("Products");
+
+        try
+        {
+            if (attibute.ToLower() == "name")
+            {
+                var filter = Builders<ProductModel>.Filter.Eq("Name", name);
+                var update = Builders<ProductModel>.Update.Set("Name", newValue);
+                collection.UpdateOne(filter, update);
+            }
+            else if (attibute.ToLower() == "price")
+            {
+                var filter = Builders<ProductModel>.Filter.Eq("Name", name);
+                var update = Builders<ProductModel>.Update.Set("Price", newValue);
+                collection.UpdateOne(filter, update);
+            }
+            else if (attibute.ToLower() == "stock")
+            {
+                var filter = Builders<ProductModel>.Filter.Eq("Name", name);
+                var update = Builders<ProductModel>.Update.Set("Stock", newValue);
+                collection.UpdateOne(filter, update);
+            }
+            else
+            {
+                throw new FormatException($"{attibute} is not a valid parameter");
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
 }
