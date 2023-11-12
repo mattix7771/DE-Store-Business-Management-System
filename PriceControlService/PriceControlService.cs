@@ -1,22 +1,28 @@
-﻿namespace PriceControlService
+﻿using DataAccessLayer;
+
+namespace PriceControlService;
+
+public class PriceControlService
 {
-    public class PriceControlService
-    {
+    DataAccessLayer.Database db = new DataAccessLayer.Database();
+
+    //get and set product price
+    public async Task SetProductPrice(String productName, double productPrice){
         
+        Task<ProductModel> product = db.GetProduct("name", productName);
 
+        product.Result.Price = productPrice;
 
-        //DataAccessLayer.Product banana = new DataAccessLayer.Product("banana", 0.3, 500);
-        //DataAccessLayer.Product orange = new DataAccessLayer.Product("orange", 0.7, 300);
-        //DataAccessLayer.Product apple = new DataAccessLayer.Product("apple", 0.6, 600);
-        //DataAccessLayer.Product mango = new DataAccessLayer.Product("mango", 1.2, 100);
-        //DataAccessLayer.Product kiwi = new DataAccessLayer.Product("kiwi", 1.7, 50);
-
-
+        await db.DeleteProduct(productName);
+        Console.WriteLine($"Product set: Name = {product.Result.Name}, Price = {product.Result.Price}, Stock = {product.Result.Stock}");
+        await db.SetProduct(product.Result.Name, product.Result.Price, product.Result.Stock);
     }
 
-    //public double GetProductPrice(string productName)
-    //{
+    public double GetProductPrice(String productName){
 
-    //    retur 
-    //}
+        Task<ProductModel> product = db.GetProduct("name", productName);
+
+        return product.Result.Price;
+    }
+
 }
