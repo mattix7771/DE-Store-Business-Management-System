@@ -2,6 +2,8 @@
 using DataAccessLayer;
 using MongoDB.Driver;
 using MongoDB.Driver.Core.Configuration;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace DataAccessLayer;
 
@@ -160,5 +162,49 @@ public class Database
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
+    }
+
+    public async Task CreateUser(bool isAdmin, string username, string password, bool haveLoyaltyCard)
+    {
+        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password)) { throw new FormatException("credenttials provided are not valid"); }
+
+        try
+        {
+            database.CreateCollection("Users");
+            var collection = database.GetCollection<UserModel>("Users");
+            var entry = new UserModel(isAdmin, username, password, haveLoyaltyCard);
+            await collection.InsertOneAsync(entry);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        Console.WriteLine($"User {username} has been successfully created");
+    }
+
+    public async Task<UserModel> GetUser(string username)
+    {
+        if (string.IsNullOrEmpty(username)) { throw new FormatException($"{username} is not a valid username"); }
+
+        var collection = database.GetCollection<UserModel>("Users");
+
+        try
+        {
+            var filter = Builders<UserModel>.Filter.Eq("username", username);
+            var documents = await collection.FindAsync(filter);
+            var results = await documents.ToListAsync();
+
+            return results.Select(document => new UserModel(
+                document.IsAdmin,
+                document.Username,
+                document.Password,
+                document.HaveLoyaltyCard
+            )).FirstOrDefault();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        return new UserModel();
     }
 }

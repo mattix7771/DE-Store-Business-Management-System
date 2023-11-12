@@ -22,8 +22,8 @@ public class UserModel
     private bool _haveLoyaltyCard;
     public bool HaveLoyaltyCard { get => _haveLoyaltyCard; set => _haveLoyaltyCard = value;}
 
-    
-    public UserModel(bool  isAdmin, string username, string password, bool haveLoyaltyCard)
+    public UserModel() { }
+    public UserModel(bool isAdmin, string username, string password, bool haveLoyaltyCard)
     {
         this._isAdmin = isAdmin;
         this._username = username;

@@ -6,13 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "InventoryControlService/1.0.0": {
+      "UserManagementService/1.0.0": {
         "dependencies": {
-          "DataAccessLayer": "1.0.0",
-          "MongoDB.Driver": "2.22.0"
+          "DataAccessLayer": "1.0.0"
         },
         "runtime": {
-          "InventoryControlService.dll": {}
+          "UserManagementService.dll": {}
         }
       },
       "AWSSDK.Core/3.7.100.14": {
@@ -175,7 +174,7 @@
     }
   },
   "libraries": {
-    "InventoryControlService/1.0.0": {
+    "UserManagementService/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
