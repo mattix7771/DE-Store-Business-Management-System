@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>DE_Store_Business_Management_System</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.22.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+    <ProjectReference Include="..\FinanceApprovalService\FinanceApprovalService.csproj" />
+    <ProjectReference Include="..\InventoryControlService\InventoryControlService.csproj" />
+    <ProjectReference Include="..\LoyaltyCardService\LoyaltyCardService.csproj" />
+    <ProjectReference Include="..\PriceControlService\PriceControlService.csproj" />
+    <ProjectReference Include="..\ReportAndAnalysisService\ReportAndAnalysisService.csproj" />
+  </ItemGroup>
+
+</Project>
