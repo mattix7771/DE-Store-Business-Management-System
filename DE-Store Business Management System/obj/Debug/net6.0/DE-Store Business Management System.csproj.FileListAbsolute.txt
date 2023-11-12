@@ -1,0 +1,42 @@
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\DE-Store Business Management System.exe
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\DE-Store Business Management System.deps.json
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\DE-Store Business Management System.runtimeconfig.json
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\DE-Store Business Management System.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\DE-Store Business Management System.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\DE-Store Business Management System.GeneratedMSBuildEditorConfig.editorconfig
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\DE-Store Business Management System.AssemblyInfoInputs.cache
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\DE-Store Business Management System.AssemblyInfo.cs
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\DE-Store Business Management System.csproj.CoreCompileInputs.cache
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\DE-Store Business Management System.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\refint\DE-Store Business Management System.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\DE-Store Business Management System.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\DE-Store Business Management System.genruntimeconfig.cache
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\ref\DE-Store Business Management System.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\FinanceApprovalService.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\FinanceApprovalService.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\DE-Store Business Management System.csproj.AssemblyReference.cache
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\DE-Store Business Management System.csproj.CopyComplete
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\AWSSDK.Core.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\DnsClient.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\MongoDB.Bson.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\MongoDB.Driver.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\MongoDB.Driver.Core.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\MongoDB.Libmongocrypt.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\SharpCompress.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\Snappier.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\ZstdSharp.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\runtimes\linux\native\libmongocrypt.so
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\runtimes\osx\native\libmongocrypt.dylib
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\runtimes\win\native\mongocrypt.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\DataAccessLayer.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\InventoryControlService.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\LoyaltyCardService.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\PriceControlService.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\ReportAndAnalysisService.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\DataAccessLayer.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\InventoryControlService.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\LoyaltyCardService.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\PriceControlService.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\ReportAndAnalysisService.pdb
