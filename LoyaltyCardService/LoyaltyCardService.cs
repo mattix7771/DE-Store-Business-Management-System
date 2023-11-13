@@ -11,9 +11,13 @@ public class LoyaltyCardService
     {
         try
         {
-
+            await db.UpdateUser(username, "HaveLoyaltyCard", true);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
         }
     }
 
-    GetLoyaltyOffers
+    //GetLoyaltyOffers
 }

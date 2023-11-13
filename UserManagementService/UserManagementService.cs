@@ -11,4 +11,14 @@ public class UserManagementService
     {
         await db.CreateUser(isAdmin, username, password, haveLoyaltyCard);
     }
+
+    public async Task<UserModel> GetUser(string username)
+    {
+        return await db.GetUser(username);
+    }
+
+    public async Task UpdateUser<T>(string username, string attribute, T newValue)
+    {
+        await db.UpdateUser(username, attribute, newValue);
+    }
 }

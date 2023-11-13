@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using MongoDB.Driver.Core.Configuration;
 using System.Diagnostics;
 using System.Xml.Linq;
+using static MongoDB.Driver.WriteConcern;
 
 namespace DataAccessLayer;
 
@@ -206,5 +207,64 @@ public class Database
             Console.WriteLine($"Error: {ex.Message}");
         }
         return new UserModel();
+    }
+
+    public async Task UpdateUser<T>(string username, string attribute, T newValue)
+    {
+        if (string.IsNullOrEmpty(username)) { throw new FormatException($"{username} is not a valid username"); }
+        if(attribute.ToLower() != "isadmin" && attribute.ToLower() != "username" && attribute.ToLower() != "password" && attribute.ToLower() != "haveloyaltycard") { throw new FormatException($"{attribute} is not a valid attribute"); }
+
+        var collection = database.GetCollection<UserModel>("Users");
+
+        try
+        {
+            var filter = Builders<UserModel>.Filter.Eq("Username", username);
+            var update = Builders<UserModel>.Update.Set(attribute, newValue);
+            collection.UpdateOne(filter, update);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+
+    public async Task CreateTransaction(UserModel user, string product, int amount, bool buyNowPayLater)
+    {
+        try
+        {
+            database.CreateCollection("Transactions");
+            var collection = database.GetCollection<TransactionModel>("Transactions");
+            var entry = new TransactionModel(user, product, amount, buyNowPayLater);
+            await collection.InsertOneAsync(entry);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        Console.WriteLine($"Successfully purhcased {amount} {product}");
+    }
+
+    public async Task<TransactionModel> GetTransaction(UserModel user)
+    {
+        var collection = database.GetCollection<TransactionModel>("Transactions");
+
+        try
+        {
+            var filter = Builders<TransactionModel>.Filter.Eq("User", user);
+            var documents = await collection.FindAsync(filter);
+            var results = await documents.ToListAsync();
+
+            return results.Select(document => new TransactionModel(
+                document.User,
+                document.Product,
+                document.Amount,
+                document.BuyNowPayLater
+            )).FirstOrDefault();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        return new TransactionModel();
     }
 }
