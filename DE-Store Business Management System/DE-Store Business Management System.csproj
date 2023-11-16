@@ -17,6 +17,7 @@
     <ProjectReference Include="..\InventoryControlService\InventoryControlService.csproj" />
     <ProjectReference Include="..\LoyaltyCardService\LoyaltyCardService.csproj" />
     <ProjectReference Include="..\PriceControlService\PriceControlService.csproj" />
+    <ProjectReference Include="..\PurchaseManagementService\PurchaseManagementService.csproj" />
     <ProjectReference Include="..\ReportAndAnalysisService\ReportAndAnalysisService.csproj" />
     <ProjectReference Include="..\UserManagementService\UserManagementService.csproj" />
   </ItemGroup>

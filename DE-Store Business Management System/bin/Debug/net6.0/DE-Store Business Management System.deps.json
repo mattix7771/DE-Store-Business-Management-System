@@ -13,6 +13,7 @@
           "LoyaltyCardService": "1.0.0",
           "MongoDB.Driver": "2.22.0",
           "PriceControlService": "1.0.0",
+          "PurchaseManagementService": "1.0.0",
           "ReportAndAnalysisService": "1.0.0",
           "UserManagementService": "1.0.0"
         },
@@ -179,6 +180,7 @@
       },
       "FinanceApprovalService/1.0.0": {
         "dependencies": {
+          "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0"
         },
         "runtime": {
@@ -210,6 +212,14 @@
         },
         "runtime": {
           "PriceControlService.dll": {}
+        }
+      },
+      "PurchaseManagementService/1.0.0": {
+        "dependencies": {
+          "DataAccessLayer": "1.0.0"
+        },
+        "runtime": {
+          "PurchaseManagementService.dll": {}
         }
       },
       "ReportAndAnalysisService/1.0.0": {
@@ -383,6 +393,11 @@
       "sha512": ""
     },
     "PriceControlService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PurchaseManagementService/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

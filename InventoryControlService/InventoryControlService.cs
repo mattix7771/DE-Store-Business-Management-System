@@ -52,4 +52,14 @@ public class InventoryControlService
         }
         return productsLowStock;
     }
+
+    /// <summary>
+    /// Gets a list of all avaliable products
+    /// </summary>
+    /// <returns> a list of all avaliable products </returns>
+    public async Task<List<ProductModel>> GetAllProducts()
+    {
+        List<ProductModel> products = await db.GetAllProducts();
+        return products;
+    }
 }

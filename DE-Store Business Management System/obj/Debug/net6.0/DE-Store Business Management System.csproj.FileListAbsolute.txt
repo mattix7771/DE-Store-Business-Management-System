@@ -42,3 +42,5 @@ X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business
 X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\obj\Debug\net6.0\ref\DE-Store Business Management System.dll
 X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\UserManagementService.dll
 X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\UserManagementService.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\PurchaseManagementService.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\PurchaseManagementService.pdb

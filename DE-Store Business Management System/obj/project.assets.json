@@ -310,6 +310,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0"
         },
         "compile": {
@@ -359,6 +360,19 @@
         },
         "runtime": {
           "bin/placeholder/PriceControlService.dll": {}
+        }
+      },
+      "PurchaseManagementService/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DataAccessLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PurchaseManagementService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PurchaseManagementService.dll": {}
         }
       },
       "ReportAndAnalysisService/1.0.0": {
@@ -896,6 +910,11 @@
       "path": "../PriceControlService/PriceControlService.csproj",
       "msbuildProject": "../PriceControlService/PriceControlService.csproj"
     },
+    "PurchaseManagementService/1.0.0": {
+      "type": "project",
+      "path": "../PurchaseManagementService/PurchaseManagementService.csproj",
+      "msbuildProject": "../PurchaseManagementService/PurchaseManagementService.csproj"
+    },
     "ReportAndAnalysisService/1.0.0": {
       "type": "project",
       "path": "../ReportAndAnalysisService/ReportAndAnalysisService.csproj",
@@ -914,6 +933,7 @@
       "LoyaltyCardService >= 1.0.0",
       "MongoDB.Driver >= 2.22.0",
       "PriceControlService >= 1.0.0",
+      "PurchaseManagementService >= 1.0.0",
       "ReportAndAnalysisService >= 1.0.0",
       "UserManagementService >= 1.0.0"
     ]
@@ -956,6 +976,9 @@
             },
             "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PriceControlService\\PriceControlService.csproj": {
               "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PriceControlService\\PriceControlService.csproj"
+            },
+            "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PurchaseManagementService\\PurchaseManagementService.csproj": {
+              "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PurchaseManagementService\\PurchaseManagementService.csproj"
             },
             "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ReportAndAnalysisService\\ReportAndAnalysisService.csproj": {
               "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ReportAndAnalysisService\\ReportAndAnalysisService.csproj"

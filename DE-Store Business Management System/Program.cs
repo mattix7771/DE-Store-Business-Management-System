@@ -24,13 +24,14 @@ namespace DE_Store_Business_Management_System
             PriceControlService.PriceControlService priceControlService = new PriceControlService.PriceControlService();
             InventoryControlService.InventoryControlService inventoryControlService = new InventoryControlService.InventoryControlService();
             LoyaltyCardService.LoyaltyCardService loyaltyCardService = new LoyaltyCardService.LoyaltyCardService();
-            UserManagementService.UserManagementService user = new UserManagementService.UserManagementService();
+            PurchaseManagementService.PurchaseManagementService purchaseManagementService = new PurchaseManagementService.PurchaseManagementService();
+            UserManagementService.UserManagementService userManagementService = new UserManagementService.UserManagementService();
 
             // Current user
             UserModel currentUser = new UserModel();
             
             // User selection
-            List<UserModel> users = await user.GetAllUsers();
+            List<UserModel> users = await userManagementService.GetAllUsers();
             if (users.Count == 0)
                 Console.WriteLine("No user found, please create a new user");
             else
@@ -72,6 +73,8 @@ namespace DE_Store_Business_Management_System
                 Console.WriteLine("6. Apply Loyalty Card");
                 Console.WriteLine("7. Revoke Loyalty Card");
                 Console.WriteLine("8. Get All Loyalty Card Holders");
+                Console.WriteLine("9. Make a purchase");
+                Console.WriteLine("10. Get user purchases");
 
                 string input = Console.ReadLine();
                 switch (int.Parse(input))
@@ -208,6 +211,51 @@ namespace DE_Store_Business_Management_System
                             }
                         }
                         else { Console.WriteLine("Only a system admin can take this action!"); }
+                        break;
+
+                    case 9:
+                        Console.WriteLine("What product would you like to purchase?");
+
+                        try
+                        {
+                            List<ProductModel> products9 = await inventoryControlService.GetAllProducts();
+                            for (int i = 0; i < products9.Count; i++)
+                                Console.WriteLine(products9[i].Name);
+                            string productChoice = Console.ReadLine();
+
+                            Console.WriteLine("How many units would you like to purchase?");
+                            int purchaseAmount = int.Parse(Console.ReadLine());
+
+                            Console.WriteLine("Would you like to buy now and pay later? (y/n)");
+                            bool buyNowPayLater = Console.ReadLine() == "y" ? true : false;
+
+                            await purchaseManagementService.MakePurchase(currentUser, productChoice, purchaseAmount, buyNowPayLater);
+                        }
+                        catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                        break;
+
+                    case 10:
+                        if (currentUser.IsAdmin)
+                        {
+                            Console.Write("Enter the number of a user: ");
+                            string user10 = Console.ReadLine();
+
+                            try
+                            {
+                                UserModel findUser = await userManagementService.GetUser(user10);
+                                List<TransactionModel> userTransactions = await purchaseManagementService.GetUserPurchases(findUser);
+
+                                if (userTransactions.Count < 1)
+                                    Console.WriteLine("This user has no past transactions");
+                                else
+                                {
+                                    foreach (TransactionModel transaction in userTransactions)
+                                        Console.WriteLine($"username: {findUser.Username}, product bought: {transaction.Product}, amount bought: {transaction.Amount}, buyNowPayLater: {transaction.BuyNowPayLater}");
+                                }
+
+                            }
+                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                        }
                         break;
 
                     default:

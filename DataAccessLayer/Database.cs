@@ -213,7 +213,7 @@ public class Database
 
         try
         {
-            var filter = Builders<UserModel>.Filter.Eq("username", username);
+            var filter = Builders<UserModel>.Filter.Eq("Username", username);
             var documents = await collection.FindAsync(filter);
             var results = await documents.ToListAsync();
 
@@ -272,7 +272,6 @@ public class Database
     {
         try
         {
-            database.CreateCollection("Transactions");
             var collection = database.GetCollection<TransactionModel>("Transactions");
             var entry = new TransactionModel(user, product, amount, buyNowPayLater);
             await collection.InsertOneAsync(entry);
@@ -281,30 +280,43 @@ public class Database
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
-        Console.WriteLine($"Successfully purhcased {amount} {product}");
+        Console.WriteLine($"Successfully purchased {amount} {product}");
     }
 
-    public async Task<TransactionModel> GetTransaction(UserModel user)
+    public async Task<List<TransactionModel>> GetUserTransactions(UserModel user)
     {
         var collection = database.GetCollection<TransactionModel>("Transactions");
 
         try
         {
-            var filter = Builders<TransactionModel>.Filter.Eq("User", user);
+            var filter = Builders<TransactionModel>.Filter.Eq("User.Username", user.Username);
             var documents = await collection.FindAsync(filter);
             var results = await documents.ToListAsync();
 
-            return results.Select(document => new TransactionModel(
-                document.User,
-                document.Product,
-                document.Amount,
-                document.BuyNowPayLater
-            )).FirstOrDefault();
+            return results;
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
-        return new TransactionModel();
+        return new List<TransactionModel>();
+    }
+
+    public async Task<List<TransactionModel>> GetAllTransactions()
+    {
+        var collection = database.GetCollection<TransactionModel>("Transactions");
+
+        try
+        {
+            var documents = await collection.FindAsync(_ => true);
+            var results = await documents.ToListAsync();
+
+            return results;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        return new List<TransactionModel>();
     }
 }
