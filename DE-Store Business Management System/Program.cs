@@ -26,6 +26,7 @@ namespace DE_Store_Business_Management_System
             LoyaltyCardService.LoyaltyCardService loyaltyCardService = new LoyaltyCardService.LoyaltyCardService();
             PurchaseManagementService.PurchaseManagementService purchaseManagementService = new PurchaseManagementService.PurchaseManagementService();
             UserManagementService.UserManagementService userManagementService = new UserManagementService.UserManagementService();
+            ReportAndAnalysisService.ReportAndAnalysisService reportAndAnalysisService = new ReportAndAnalysisService.ReportAndAnalysisService();
 
             // Current user
             UserModel currentUser = new UserModel();
@@ -75,6 +76,7 @@ namespace DE_Store_Business_Management_System
                 Console.WriteLine("8. Get All Loyalty Card Holders");
                 Console.WriteLine("9. Make a purchase");
                 Console.WriteLine("10. Get user purchases");
+                Console.WriteLine("11. View Store Performace");
 
                 string input = Console.ReadLine();
                 switch (int.Parse(input))
@@ -253,6 +255,19 @@ namespace DE_Store_Business_Management_System
                                         Console.WriteLine($"username: {findUser.Username}, product bought: {transaction.Product}, amount bought: {transaction.Amount}, buyNowPayLater: {transaction.BuyNowPayLater}");
                                 }
 
+                            }
+                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                        }
+                        break;
+
+                    case 11:
+                        if (currentUser.IsAdmin)
+                        {
+                            try
+                            {
+                                List<TransactionModel> transactions = await reportAndAnalysisService.StoreAnalysis();
+                                foreach (TransactionModel transaction in transactions)
+                                    Console.WriteLine($"username: {transaction.User.Username}, product bought: {transaction.Product}, amount bought: {transaction.Amount}, buyNowPayLater: {transaction.BuyNowPayLater}");
                             }
                             catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
                         }

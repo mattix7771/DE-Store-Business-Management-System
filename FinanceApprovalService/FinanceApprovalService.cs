@@ -1,7 +1,11 @@
-﻿namespace FinanceApprovalService
+﻿namespace FinanceApprovalService;
+
+public class FinanceApprovalService
 {
-    public class FinanceApprovalService
+    public void ApproveFinanace()
     {
-        public string hello(string x) { return x; }
+        Console.WriteLine("Connecting to Enabling Financing System...");
+        Thread.Sleep(3000);
+        Console.WriteLine("Purchase Approved");
     }
 }

@@ -180,7 +180,6 @@
       },
       "FinanceApprovalService/1.0.0": {
         "dependencies": {
-          "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0"
         },
         "runtime": {
@@ -216,7 +215,8 @@
       },
       "PurchaseManagementService/1.0.0": {
         "dependencies": {
-          "DataAccessLayer": "1.0.0"
+          "DataAccessLayer": "1.0.0",
+          "FinanceApprovalService": "1.0.0"
         },
         "runtime": {
           "PurchaseManagementService.dll": {}
@@ -224,6 +224,7 @@
       },
       "ReportAndAnalysisService/1.0.0": {
         "dependencies": {
+          "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0"
         },
         "runtime": {

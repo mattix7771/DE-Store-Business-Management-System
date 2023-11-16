@@ -10,3 +10,6 @@ X:\Library\Documents\repos\DE-Store Business Management System\ReportAndAnalysis
 X:\Library\Documents\repos\DE-Store Business Management System\ReportAndAnalysisService\obj\Debug\net6.0\refint\ReportAndAnalysisService.dll
 X:\Library\Documents\repos\DE-Store Business Management System\ReportAndAnalysisService\obj\Debug\net6.0\ReportAndAnalysisService.pdb
 X:\Library\Documents\repos\DE-Store Business Management System\ReportAndAnalysisService\obj\Debug\net6.0\ref\ReportAndAnalysisService.dll
+X:\Library\Documents\repos\DE-Store Business Management System\ReportAndAnalysisService\bin\Debug\net6.0\DataAccessLayer.dll
+X:\Library\Documents\repos\DE-Store Business Management System\ReportAndAnalysisService\bin\Debug\net6.0\DataAccessLayer.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\ReportAndAnalysisService\obj\Debug\net6.0\ReportAndAnalysisService.csproj.CopyComplete

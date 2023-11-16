@@ -171,11 +171,7 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {
-              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -434,6 +430,9 @@
             "projectReferences": {
               "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
                 "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj"
               }
             }
           }
@@ -490,7 +489,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
