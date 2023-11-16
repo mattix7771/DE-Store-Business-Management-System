@@ -1,13 +1,20 @@
 ﻿using DataAccessLayer;
-using MongoDB.Driver;
 
 namespace InventoryControlService;
 
+/* InventoryControlService is a service that manages stock of products, including:
+ ordering new stock for products that are low on stock, monitor stock of products, and
+generate warnings if a product has less than 10 units in stock*/
 public class InventoryControlService
 {
+    // Database variable to communicate with database
     DataAccessLayer.Database db = new DataAccessLayer.Database();
 
-    //reorderstock, monitorstock, generatewarnings
+    /// <summary>
+    /// Orders stock for products
+    /// </summary>
+    /// <param productName> The name of the product whose stock must be ordered </param>
+    /// <param stockOrdered> The stock ordered for the product </param>
     public async Task OrderStock(string productName, int stockOrdered)
     {
         Task<ProductModel> product = db.GetProduct("name", productName);
@@ -16,6 +23,11 @@ public class InventoryControlService
         await db.UpdateProduct(productName, "stock", newStock);
     }
 
+    /// <summary>
+    /// Monitors product stock
+    /// </summary>
+    /// <param productName> The name of the product whose stock must be checked </param>
+    /// <returns> The stock of a product </returns>
     public int MonitorStock(string productName)
     {
         Task<ProductModel> product = db.GetProduct("name", productName);
@@ -23,8 +35,21 @@ public class InventoryControlService
         return product.Result.Stock;
     }
 
-    public void GenerateWarnings()
+    /// <summary>
+    /// Generate warnings for products low on stock
+    /// </summary>
+    /// <returns> A list of products low on stock </returns>
+    public async Task<List<ProductModel>> GenerateWarnings()
     {
+        List<ProductModel> products = await db.GetAllProducts();
+        List<ProductModel> productsLowStock = new List<ProductModel>();
 
+        for (int i = 0; i < products.Count; i++)
+        {
+            ProductModel product = products[i];
+            if(product.Stock < 10)
+                productsLowStock.Add(product);
+        }
+        return productsLowStock;
     }
 }

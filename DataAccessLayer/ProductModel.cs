@@ -22,10 +22,20 @@ public class ProductModel
     private int _stock;
     public int Stock { get => _stock; set => _stock = value; }
 
+    private string _offer;
+    public string Offer { get => _offer; set => _offer = value; }
+
     public ProductModel(string name, double price, int stock)
     {
         this._name = name;
         this._price = price;
         this._stock = stock;
+    }
+    public ProductModel(string name, double price, int stock, string offer)
+    {
+        this._name = name;
+        this._price = price;
+        this._stock = stock;
+        this._offer = offer;
     }
 }

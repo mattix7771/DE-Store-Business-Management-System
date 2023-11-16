@@ -1,7 +1,9 @@
 ﻿using Amazon.Runtime.Internal.Util;
 using DataAccessLayer;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Core.Configuration;
+using SharpCompress.Common;
 using System.Diagnostics;
 using System.Xml.Linq;
 using static MongoDB.Driver.WriteConcern;
@@ -22,6 +24,9 @@ public class Database
         {
             client = new MongoClient(connectionString);
             database = client.GetDatabase(databaseName);
+            database.CreateCollection("Products");
+            database.CreateCollection("Users");
+            database.CreateCollection("Transactions");
         }
         catch (Exception ex)
         {
@@ -37,7 +42,6 @@ public class Database
 
         try
         {
-            database.CreateCollection("Products");
             var collection = database.GetCollection<ProductModel>("Products");
             var entry = new ProductModel(name, price, stock);
             await collection.InsertOneAsync(entry);
@@ -104,6 +108,24 @@ public class Database
             Console.WriteLine($"Error: {ex.Message}");
         }
         return new ProductModel("", 0.0, 0);
+    }
+
+    public async Task<List<ProductModel>> GetAllProducts()
+    {
+        var collection = database.GetCollection<ProductModel>("Products");
+
+        try
+        {
+            var documents = await collection.FindAsync(_ => true);
+            var results = await documents.ToListAsync();
+
+            return results;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        return new List<ProductModel> { };
     }
 
     public async Task DeleteProduct(string name)
@@ -207,6 +229,24 @@ public class Database
             Console.WriteLine($"Error: {ex.Message}");
         }
         return new UserModel();
+    }
+
+    public async Task<List<UserModel>> GetAllUsers()
+    {
+        var collection = database.GetCollection<UserModel>("Users");
+
+        try
+        {
+            var documents = await collection.FindAsync(_ => true);
+            var results = await documents.ToListAsync();
+
+            return results;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        return new List<UserModel> { };
     }
 
     public async Task UpdateUser<T>(string username, string attribute, T newValue)

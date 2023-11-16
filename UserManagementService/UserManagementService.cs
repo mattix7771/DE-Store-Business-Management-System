@@ -17,6 +17,11 @@ public class UserManagementService
         return await db.GetUser(username);
     }
 
+    public async Task<List<UserModel>> GetAllUsers()
+    {
+        return await db.GetAllUsers();
+    }
+
     public async Task UpdateUser<T>(string username, string attribute, T newValue)
     {
         await db.UpdateUser(username, attribute, newValue);

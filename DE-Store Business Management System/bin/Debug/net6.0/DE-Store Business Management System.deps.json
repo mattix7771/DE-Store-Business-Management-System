@@ -8,13 +8,13 @@
     ".NETCoreApp,Version=v6.0": {
       "DE-Store Business Management System/1.0.0": {
         "dependencies": {
-          "DataAccessLayer": "1.0.0",
           "FinanceApprovalService": "1.0.0",
           "InventoryControlService": "1.0.0",
           "LoyaltyCardService": "1.0.0",
           "MongoDB.Driver": "2.22.0",
           "PriceControlService": "1.0.0",
-          "ReportAndAnalysisService": "1.0.0"
+          "ReportAndAnalysisService": "1.0.0",
+          "UserManagementService": "1.0.0"
         },
         "runtime": {
           "DE-Store Business Management System.dll": {}
@@ -187,6 +187,7 @@
       },
       "InventoryControlService/1.0.0": {
         "dependencies": {
+          "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0"
         },
         "runtime": {
@@ -195,6 +196,7 @@
       },
       "LoyaltyCardService/1.0.0": {
         "dependencies": {
+          "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0"
         },
         "runtime": {
@@ -216,6 +218,14 @@
         },
         "runtime": {
           "ReportAndAnalysisService.dll": {}
+        }
+      },
+      "UserManagementService/1.0.0": {
+        "dependencies": {
+          "DataAccessLayer": "1.0.0"
+        },
+        "runtime": {
+          "UserManagementService.dll": {}
         }
       }
     }
@@ -378,6 +388,11 @@
       "sha512": ""
     },
     "ReportAndAnalysisService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UserManagementService/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

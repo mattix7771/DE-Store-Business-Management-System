@@ -13,12 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
     <ProjectReference Include="..\FinanceApprovalService\FinanceApprovalService.csproj" />
     <ProjectReference Include="..\InventoryControlService\InventoryControlService.csproj" />
     <ProjectReference Include="..\LoyaltyCardService\LoyaltyCardService.csproj" />
     <ProjectReference Include="..\PriceControlService\PriceControlService.csproj" />
     <ProjectReference Include="..\ReportAndAnalysisService\ReportAndAnalysisService.csproj" />
+    <ProjectReference Include="..\UserManagementService\UserManagementService.csproj" />
   </ItemGroup>
 
 </Project>

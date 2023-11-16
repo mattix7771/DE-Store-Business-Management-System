@@ -323,6 +323,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0"
         },
         "compile": {
@@ -336,6 +337,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0"
         },
         "compile": {
@@ -370,6 +372,19 @@
         },
         "runtime": {
           "bin/placeholder/ReportAndAnalysisService.dll": {}
+        }
+      },
+      "UserManagementService/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DataAccessLayer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/UserManagementService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UserManagementService.dll": {}
         }
       }
     }
@@ -885,17 +900,22 @@
       "type": "project",
       "path": "../ReportAndAnalysisService/ReportAndAnalysisService.csproj",
       "msbuildProject": "../ReportAndAnalysisService/ReportAndAnalysisService.csproj"
+    },
+    "UserManagementService/1.0.0": {
+      "type": "project",
+      "path": "../UserManagementService/UserManagementService.csproj",
+      "msbuildProject": "../UserManagementService/UserManagementService.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "DataAccessLayer >= 1.0.0",
       "FinanceApprovalService >= 1.0.0",
       "InventoryControlService >= 1.0.0",
       "LoyaltyCardService >= 1.0.0",
       "MongoDB.Driver >= 2.22.0",
       "PriceControlService >= 1.0.0",
-      "ReportAndAnalysisService >= 1.0.0"
+      "ReportAndAnalysisService >= 1.0.0",
+      "UserManagementService >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -925,9 +945,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
-              "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
-            },
             "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj": {
               "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj"
             },
@@ -942,6 +959,9 @@
             },
             "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ReportAndAnalysisService\\ReportAndAnalysisService.csproj": {
               "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ReportAndAnalysisService\\ReportAndAnalysisService.csproj"
+            },
+            "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\UserManagementService\\UserManagementService.csproj": {
+              "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\UserManagementService\\UserManagementService.csproj"
             }
           }
         }
