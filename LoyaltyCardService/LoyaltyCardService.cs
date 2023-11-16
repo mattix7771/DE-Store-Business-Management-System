@@ -9,6 +9,10 @@ public class LoyaltyCardService
     // Database variable to communicate with database
     DataAccessLayer.Database db = new DataAccessLayer.Database();
 
+    /// <summary>
+    /// Applies a loyalty card to a user
+    /// </summary>
+    /// <param username> The username of the user </param>
     public async Task ApplyLoyaltyCard(string username)
     {
         try
@@ -21,6 +25,10 @@ public class LoyaltyCardService
         }
     }
 
+    /// <summary>
+    /// Revokes a loyalty card from a user
+    /// </summary>
+    /// <param username> The username of the user </param>
     public async Task RemoveLoyaltyCard(string username)
     {
         try
@@ -33,6 +41,10 @@ public class LoyaltyCardService
         }
     }
 
+    /// <summary>
+    /// Gets all users who have a loyalty card
+    /// </summary>
+    /// <returns> A list of all users who have a loyalty card </returns>
     public async Task<List<UserModel>> LoyaltyCardHolders()
     {
         List<UserModel> loyaltyCardHolders = new List<UserModel>();
@@ -41,7 +53,7 @@ public class LoyaltyCardService
             List<UserModel> allUsers = await db.GetAllUsers();
             foreach (UserModel user in allUsers)
             {
-                if(user.HaveLoyaltyCard)
+                if (user.HaveLoyaltyCard)
                     loyaltyCardHolders.Add(user);
             }
         }
@@ -51,3 +63,4 @@ public class LoyaltyCardService
         }
         return loyaltyCardHolders;
     }
+}

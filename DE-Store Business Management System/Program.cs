@@ -23,6 +23,7 @@ namespace DE_Store_Business_Management_System
             // Initialisation of services
             PriceControlService.PriceControlService priceControlService = new PriceControlService.PriceControlService();
             InventoryControlService.InventoryControlService inventoryControlService = new InventoryControlService.InventoryControlService();
+            LoyaltyCardService.LoyaltyCardService loyaltyCardService = new LoyaltyCardService.LoyaltyCardService();
             UserManagementService.UserManagementService user = new UserManagementService.UserManagementService();
 
             // Current user
@@ -68,6 +69,9 @@ namespace DE_Store_Business_Management_System
                 Console.WriteLine("3. Order Stock");
                 Console.WriteLine("4. Monitor Stock");
                 Console.WriteLine("5. Generate Warnings");
+                Console.WriteLine("6. Apply Loyalty Card");
+                Console.WriteLine("7. Revoke Loyalty Card");
+                Console.WriteLine("8. Get All Loyalty Card Holders");
 
                 string input = Console.ReadLine();
                 switch (int.Parse(input))
@@ -94,6 +98,7 @@ namespace DE_Store_Business_Management_System
                             }
                             catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
                         }
+                        else { Console.WriteLine("Only a system admin can take this action!"); }
                         break;
 
                     case 3:
@@ -110,6 +115,7 @@ namespace DE_Store_Business_Management_System
                             }
                             catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
                         }
+                        else { Console.WriteLine("Only a system admin can take this action!"); }
                         break;
 
                     case 4:
@@ -143,6 +149,65 @@ namespace DE_Store_Business_Management_System
                             }
                             catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
                         }
+                        else { Console.WriteLine("Only a system admin can take this action!"); }
+                        break;
+
+                    case 6:
+                        if (currentUser.IsAdmin)
+                        {
+                            Console.Write("Enter a username: ");
+                            string username = Console.ReadLine();
+
+                            try
+                            {
+                                await loyaltyCardService.ApplyLoyaltyCard(username);
+                            }
+                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+
+                            Console.WriteLine($"Successfully applied loyalty card to {username}");
+                        }
+                        else { Console.WriteLine("Only a system admin can take this action!"); }
+                        break;
+
+                    case 7:
+                        if (currentUser.IsAdmin)
+                        {
+                            Console.Write("Enter a username: ");
+                            string username = Console.ReadLine();
+
+                            try
+                            {
+                                await loyaltyCardService.RemoveLoyaltyCard(username);
+                            }
+                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+
+                            Console.WriteLine($"Successfully revoked loyalty from {username}");
+                        }
+                        else { Console.WriteLine("Only a system admin can take this action!"); }
+                        break;
+
+                    case 8:
+                        if (currentUser.IsAdmin)
+                        {
+                            List<UserModel> loyaltyCardHolders = new List<UserModel>();
+                            try
+                            {
+                                loyaltyCardHolders = await loyaltyCardService.LoyaltyCardHolders();
+                            }
+                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+
+                            if (loyaltyCardHolders.Count > 0)
+                            {
+                                Console.WriteLine("Users with a loyalty card:");
+                                foreach (UserModel possibleLoyaltyCardHolder in loyaltyCardHolders)
+                                    Console.WriteLine(possibleLoyaltyCardHolder.Username);
+                            }
+                            else
+                            {
+                                Console.WriteLine("There are no users with an active loyalty card");
+                            }
+                        }
+                        else { Console.WriteLine("Only a system admin can take this action!"); }
                         break;
 
                     default:
