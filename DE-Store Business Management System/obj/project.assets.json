@@ -355,6 +355,7 @@
         "dependencies": {
           "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0",
+          "ServiceDiscovery": "1.0.0",
           "SharedModels": "1.0.0"
         },
         "compile": {
@@ -391,6 +392,16 @@
         },
         "runtime": {
           "bin/placeholder/ReportAndAnalysisService.dll": {}
+        }
+      },
+      "ServiceDiscovery/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ServiceDiscovery.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ServiceDiscovery.dll": {}
         }
       },
       "SharedModels/1.0.0": {
@@ -937,6 +948,11 @@
       "type": "project",
       "path": "../ReportAndAnalysisService/ReportAndAnalysisService.csproj",
       "msbuildProject": "../ReportAndAnalysisService/ReportAndAnalysisService.csproj"
+    },
+    "ServiceDiscovery/1.0.0": {
+      "type": "project",
+      "path": "../ServiceDiscovery/ServiceDiscovery.csproj",
+      "msbuildProject": "../ServiceDiscovery/ServiceDiscovery.csproj"
     },
     "SharedModels/1.0.0": {
       "type": "project",

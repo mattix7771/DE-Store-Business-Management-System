@@ -4,6 +4,6 @@
     public interface IPriceControlService
     {
         Task SetProductPrice(string productName, double productPrice);
-        double GetProductPrice(string productName);
+        Task<double> GetProductPrice(string productName);
     }
 }

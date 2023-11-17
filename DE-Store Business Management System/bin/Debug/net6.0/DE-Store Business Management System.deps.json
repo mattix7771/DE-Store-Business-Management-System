@@ -210,6 +210,7 @@
         "dependencies": {
           "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0",
+          "ServiceDiscovery": "1.0.0",
           "SharedModels": "1.0.0"
         },
         "runtime": {
@@ -233,6 +234,11 @@
         },
         "runtime": {
           "ReportAndAnalysisService.dll": {}
+        }
+      },
+      "ServiceDiscovery/1.0.0": {
+        "runtime": {
+          "ServiceDiscovery.dll": {}
         }
       },
       "SharedModels/1.0.0": {
@@ -416,6 +422,11 @@
       "sha512": ""
     },
     "ReportAndAnalysisService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ServiceDiscovery/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -307,6 +307,16 @@
           "bin/placeholder/DataAccessLayer.dll": {}
         }
       },
+      "ServiceDiscovery/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ServiceDiscovery.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ServiceDiscovery.dll": {}
+        }
+      },
       "SharedModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -809,6 +819,11 @@
       "path": "../DataAccessLayer/DataAccessLayer.csproj",
       "msbuildProject": "../DataAccessLayer/DataAccessLayer.csproj"
     },
+    "ServiceDiscovery/1.0.0": {
+      "type": "project",
+      "path": "../ServiceDiscovery/ServiceDiscovery.csproj",
+      "msbuildProject": "../ServiceDiscovery/ServiceDiscovery.csproj"
+    },
     "SharedModels/1.0.0": {
       "type": "project",
       "path": "../SharedModels/SharedModels.csproj",
@@ -819,6 +834,7 @@
     "net6.0": [
       "DataAccessLayer >= 1.0.0",
       "MongoDB.Driver >= 2.22.0",
+      "ServiceDiscovery >= 1.0.0",
       "SharedModels >= 1.0.0"
     ]
   },
@@ -851,6 +867,9 @@
           "projectReferences": {
             "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
               "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
+            },
+            "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj": {
+              "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj"
             },
             "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj": {
               "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj"

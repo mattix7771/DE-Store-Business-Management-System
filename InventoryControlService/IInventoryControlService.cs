@@ -8,5 +8,6 @@ namespace InventoryControlService
         int MonitorStock(string productName);
         Task<List<ProductModel>> GenerateWarnings();
         Task<List<ProductModel>> GetAllProducts();
+        Task DeleteProduct (string productName);
     }
 }

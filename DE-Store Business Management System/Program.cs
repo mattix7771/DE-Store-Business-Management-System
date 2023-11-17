@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SharedModels;
+using ServiceDiscovery;
 
 namespace DE_Store_Business_Management_System
 {
@@ -18,11 +19,16 @@ namespace DE_Store_Business_Management_System
             Console.WriteLine("Welcome to DE-Store Business Management System");
 
             // Database Initialisation
-            DataAccessLayer.Database db = new DataAccessLayer.Database();
+            var db = new DataAccessLayer.Database();
             db.DatabaseInitialisation();
 
+            var serviceRegistry = new ServiceRegistry();
+            serviceRegistry.RegisterService<IPriceControl>(db);
+
+            //var priceControlService = new PriceControlService(serviceRegistry);
+
             // Initialisation of services
-            PriceControlService.PriceControlService priceControlService = new PriceControlService.PriceControlService();
+            var priceControlService = new PriceControlService.PriceControlService(serviceRegistry);
             InventoryControlService.InventoryControlService inventoryControlService = new InventoryControlService.InventoryControlService();
             LoyaltyCardService.LoyaltyCardService loyaltyCardService = new LoyaltyCardService.LoyaltyCardService();
             PurchaseManagementService.PurchaseManagementService purchaseManagementService = new PurchaseManagementService.PurchaseManagementService();

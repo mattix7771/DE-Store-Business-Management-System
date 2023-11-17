@@ -63,4 +63,13 @@ public class InventoryControlService : IInventoryControlService
         List<ProductModel> products = await db.GetAllProducts();
         return products;
     }
+
+    /// <summary>
+    /// Deletes a product
+    /// </summary>
+    /// <param productName> The name of the product whose stock must be checked </param>
+    public async Task DeleteProduct(string productName)
+    {
+        await db.DeleteProduct(productName);
+    }
 }

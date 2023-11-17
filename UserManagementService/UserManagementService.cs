@@ -50,4 +50,13 @@ public class UserManagementService : IUserManagementService
     {
         await db.UpdateUser(username, attribute, newValue);
     }
+
+    /// <summary>
+    /// Deletes a user
+    /// </summary>
+    /// <param username> The username of the user </param>
+    public async Task DeleteUser(string username)
+    {
+        await db.DeleteUser(username);
+    }
 }

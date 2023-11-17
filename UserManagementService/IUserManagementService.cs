@@ -9,5 +9,6 @@ namespace UserManagementService
         Task<UserModel> GetUser(string username);
         Task<List<UserModel>> GetAllUsers();
         Task UpdateUser<T>(string username, string attribute, T newValue);
+        Task DeleteUser(string username);
     }
 }

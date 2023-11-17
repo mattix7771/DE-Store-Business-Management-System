@@ -46,3 +46,5 @@ X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business
 X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\PurchaseManagementService.pdb
 X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\SharedModels.dll
 X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\SharedModels.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\ServiceDiscovery.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DE-Store Business Management System\bin\Debug\net6.0\ServiceDiscovery.pdb

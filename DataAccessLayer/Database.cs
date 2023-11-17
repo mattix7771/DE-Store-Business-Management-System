@@ -10,7 +10,7 @@ using static MongoDB.Driver.WriteConcern;
 
 namespace DataAccessLayer;
 
-public class Database : IDatabase
+public class Database : IDatabase, IPriceControl, IInventoryControl, ILoyaltyCard, IPurchaseManagement, IUserManagement, IReportAndAnalysis
 {
     public static MongoClient client;
     public static IMongoDatabase database;
@@ -136,7 +136,6 @@ public class Database : IDatabase
 
         try
         {
-            database.CreateCollection("Products");
             var collection = database.GetCollection<SharedModels.ProductModel>("Products");
 
             collection.DeleteOne(filter);
@@ -193,7 +192,6 @@ public class Database : IDatabase
 
         try
         {
-            database.CreateCollection("Users");
             var collection = database.GetCollection<SharedModels.UserModel>("Users");
             var entry = new SharedModels.UserModel(isAdmin, username, password, haveLoyaltyCard);
             await collection.InsertOneAsync(entry);
@@ -266,6 +264,26 @@ public class Database : IDatabase
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
+    }
+
+    public async Task DeleteUser(string username)
+    {
+        if (string.IsNullOrEmpty(username)) { throw new FormatException("Username provided is empty"); }
+
+        var filter = Builders<SharedModels.UserModel>.Filter.Eq("Username", username);
+
+        try
+        {
+            var collection = database.GetCollection<SharedModels.UserModel>("Users");
+
+            collection.DeleteOne(filter);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+
+        Console.WriteLine($"User with username {username} has been successfully deleted");
     }
 
     public async Task CreateTransaction(SharedModels.UserModel user, string product, int amount, bool buyNowPayLater)
