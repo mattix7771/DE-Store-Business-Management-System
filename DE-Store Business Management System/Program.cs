@@ -35,7 +35,16 @@ namespace DE_Store_Business_Management_System
             // User selection
             List<UserModel> users = await userManagementService.GetAllUsers();
             if (users.Count == 0)
+            {
                 Console.WriteLine("No user found, please create a new user");
+                Console.WriteLine("Enter a username: ");
+                string username = Console.ReadLine();
+                Console.WriteLine("Enter a password: ");
+                string password = Console.ReadLine();
+                Console.WriteLine("Are you an admin? (y/n)");
+                string isadmin = Console.ReadLine();
+                await userManagementService.CreateUser(isadmin == "y"? true : false, username, password, false);
+            }
             else
             {
                 Console.WriteLine("Please select user to use");
