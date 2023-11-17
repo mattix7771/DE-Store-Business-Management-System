@@ -44,6 +44,8 @@ namespace DE_Store_Business_Management_System
                 Console.WriteLine("Are you an admin? (y/n)");
                 string isadmin = Console.ReadLine();
                 await userManagementService.CreateUser(isadmin == "y"? true : false, username, password, false);
+
+                currentUser = await userManagementService.GetUser(username);
             }
             else
             {

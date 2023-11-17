@@ -10,3 +10,6 @@ X:\Library\Documents\repos\DE-Store Business Management System\DataAccessLayer\o
 X:\Library\Documents\repos\DE-Store Business Management System\DataAccessLayer\obj\Debug\net6.0\refint\DataAccessLayer.dll
 X:\Library\Documents\repos\DE-Store Business Management System\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.pdb
 X:\Library\Documents\repos\DE-Store Business Management System\DataAccessLayer\obj\Debug\net6.0\ref\DataAccessLayer.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DataAccessLayer\bin\Debug\net6.0\SharedModels.dll
+X:\Library\Documents\repos\DE-Store Business Management System\DataAccessLayer\bin\Debug\net6.0\SharedModels.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\DataAccessLayer\obj\Debug\net6.0\DataAccessLayer.csproj.CopyComplete

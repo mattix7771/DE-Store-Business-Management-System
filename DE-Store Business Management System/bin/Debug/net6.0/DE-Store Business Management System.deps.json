@@ -172,7 +172,8 @@
       },
       "DataAccessLayer/1.0.0": {
         "dependencies": {
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "DataAccessLayer.dll": {}
@@ -189,7 +190,8 @@
       "InventoryControlService/1.0.0": {
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "InventoryControlService.dll": {}
@@ -207,7 +209,8 @@
       "PriceControlService/1.0.0": {
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "PriceControlService.dll": {}
@@ -216,7 +219,8 @@
       "PurchaseManagementService/1.0.0": {
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "FinanceApprovalService": "1.0.0"
+          "FinanceApprovalService": "1.0.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "PurchaseManagementService.dll": {}
@@ -229,6 +233,14 @@
         },
         "runtime": {
           "ReportAndAnalysisService.dll": {}
+        }
+      },
+      "SharedModels/1.0.0": {
+        "dependencies": {
+          "MongoDB.Driver": "2.22.0"
+        },
+        "runtime": {
+          "SharedModels.dll": {}
         }
       },
       "UserManagementService/1.0.0": {
@@ -404,6 +416,11 @@
       "sha512": ""
     },
     "ReportAndAnalysisService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharedModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -13,3 +13,5 @@ X:\Library\Documents\repos\DE-Store Business Management System\LoyaltyCardServic
 X:\Library\Documents\repos\DE-Store Business Management System\LoyaltyCardService\bin\Debug\net6.0\DataAccessLayer.dll
 X:\Library\Documents\repos\DE-Store Business Management System\LoyaltyCardService\bin\Debug\net6.0\DataAccessLayer.pdb
 X:\Library\Documents\repos\DE-Store Business Management System\LoyaltyCardService\obj\Debug\net6.0\LoyaltyCardService.csproj.CopyComplete
+X:\Library\Documents\repos\DE-Store Business Management System\LoyaltyCardService\bin\Debug\net6.0\SharedModels.dll
+X:\Library\Documents\repos\DE-Store Business Management System\LoyaltyCardService\bin\Debug\net6.0\SharedModels.pdb

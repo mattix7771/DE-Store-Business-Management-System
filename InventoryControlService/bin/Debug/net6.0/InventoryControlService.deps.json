@@ -9,7 +9,8 @@
       "InventoryControlService/1.0.0": {
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "InventoryControlService.dll": {}
@@ -166,10 +167,19 @@
       },
       "DataAccessLayer/1.0.0": {
         "dependencies": {
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "DataAccessLayer.dll": {}
+        }
+      },
+      "SharedModels/1.0.0": {
+        "dependencies": {
+          "MongoDB.Driver": "2.22.0"
+        },
+        "runtime": {
+          "SharedModels.dll": {}
         }
       }
     }
@@ -307,6 +317,11 @@
       "hashPath": "zstdsharp.port.0.6.2.nupkg.sha512"
     },
     "DataAccessLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharedModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

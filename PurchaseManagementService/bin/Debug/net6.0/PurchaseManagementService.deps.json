@@ -9,7 +9,8 @@
       "PurchaseManagementService/1.0.0": {
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "FinanceApprovalService": "1.0.0"
+          "FinanceApprovalService": "1.0.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "PurchaseManagementService.dll": {}
@@ -166,7 +167,8 @@
       },
       "DataAccessLayer/1.0.0": {
         "dependencies": {
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "DataAccessLayer.dll": {}
@@ -178,6 +180,14 @@
         },
         "runtime": {
           "FinanceApprovalService.dll": {}
+        }
+      },
+      "SharedModels/1.0.0": {
+        "dependencies": {
+          "MongoDB.Driver": "2.22.0"
+        },
+        "runtime": {
+          "SharedModels.dll": {}
         }
       }
     }
@@ -320,6 +330,11 @@
       "sha512": ""
     },
     "FinanceApprovalService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharedModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

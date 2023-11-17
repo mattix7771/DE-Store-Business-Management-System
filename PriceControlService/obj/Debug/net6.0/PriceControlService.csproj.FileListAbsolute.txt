@@ -13,3 +13,5 @@ X:\Library\Documents\repos\DE-Store Business Management System\PriceControlServi
 X:\Library\Documents\repos\DE-Store Business Management System\PriceControlService\obj\Debug\net6.0\refint\PriceControlService.dll
 X:\Library\Documents\repos\DE-Store Business Management System\PriceControlService\obj\Debug\net6.0\PriceControlService.pdb
 X:\Library\Documents\repos\DE-Store Business Management System\PriceControlService\obj\Debug\net6.0\ref\PriceControlService.dll
+X:\Library\Documents\repos\DE-Store Business Management System\PriceControlService\bin\Debug\net6.0\SharedModels.dll
+X:\Library\Documents\repos\DE-Store Business Management System\PriceControlService\bin\Debug\net6.0\SharedModels.pdb
