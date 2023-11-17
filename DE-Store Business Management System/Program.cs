@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SharedModels;
 using ServiceDiscovery;
+using InventoryControlService;
 
 namespace DE_Store_Business_Management_System
 {
@@ -18,67 +19,120 @@ namespace DE_Store_Business_Management_System
             // Welcome message
             Console.WriteLine("Welcome to DE-Store Business Management System");
 
-            // Database Initialisation
+            //// Database Initialisation
             var db = new DataAccessLayer.Database();
             db.DatabaseInitialisation();
 
-            var serviceRegistry = new ServiceRegistry();
-            serviceRegistry.RegisterService<IPriceControl>(db);
 
-            //var priceControlService = new PriceControlService(serviceRegistry);
 
-            // Initialisation of services
-            var priceControlService = new PriceControlService.PriceControlService(serviceRegistry);
-            InventoryControlService.InventoryControlService inventoryControlService = new InventoryControlService.InventoryControlService();
-            LoyaltyCardService.LoyaltyCardService loyaltyCardService = new LoyaltyCardService.LoyaltyCardService();
-            PurchaseManagementService.PurchaseManagementService purchaseManagementService = new PurchaseManagementService.PurchaseManagementService();
-            UserManagementService.UserManagementService userManagementService = new UserManagementService.UserManagementService();
-            ReportAndAnalysisService.ReportAndAnalysisService reportAndAnalysisService = new ReportAndAnalysisService.ReportAndAnalysisService();
+            // Create an instance of the service registry
+            IServiceRegistry serviceRegistry = new ServiceRegistry();
+
+            // Initialize and register services
+            var priceControlServiceImplementation = new PriceControlService.PriceControlService(serviceRegistry);
+            serviceRegistry.RegisterService<IPriceControlService>(priceControlServiceImplementation);
+
+            var priceControlImplementation = new DataAccessLayer.Database(); // Assuming Database implements IPriceControl
+            serviceRegistry.RegisterService<IPriceControl>(priceControlImplementation);
+
+            //var inventoryControlService = new InventoryControlService.InventoryControlService();
+            //serviceRegistry.RegisterService<IInventoryControlService>(inventoryControlService);
+
+            // ... Register other services
+
+            // Now you can retrieve the service from the registry
+            var priceControlService = serviceRegistry.GetService<IPriceControlService>();
+
+            //var retrievedInventoryControlService = serviceRegistry.GetService<IInventoryControlService>();
+
+
+
+
+
+
+
+
+
+
+
+            //var serviceRegistry = new ServiceRegistry();
+            //serviceRegistry.RegisterService<IPriceControl>(db);
+
+            ////var priceControlService = new PriceControlService(serviceRegistry);
+
+            //// Initialisation of services
+            var priceControlService1 = new PriceControlService.PriceControlService(serviceRegistry);
+            //InventoryControlService.InventoryControlService inventoryControlService = new InventoryControlService.InventoryControlService();
+            //LoyaltyCardService.LoyaltyCardService loyaltyCardService = new LoyaltyCardService.LoyaltyCardService();
+            //PurchaseManagementService.PurchaseManagementService purchaseManagementService = new PurchaseManagementService.PurchaseManagementService();
+            //UserManagementService.UserManagementService userManagementService = new UserManagementService.UserManagementService();
+            //ReportAndAnalysisService.ReportAndAnalysisService reportAndAnalysisService = new ReportAndAnalysisService.ReportAndAnalysisService();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             // Current user
             UserModel currentUser = new UserModel();
             
             // User selection
-            List<UserModel> users = await userManagementService.GetAllUsers();
-            if (users.Count == 0)
-            {
-                Console.WriteLine("No user found, please create a new user");
-                Console.WriteLine("Enter a username: ");
-                string username = Console.ReadLine();
-                Console.WriteLine("Enter a password: ");
-                string password = Console.ReadLine();
-                Console.WriteLine("Are you an admin? (y/n)");
-                string isadmin = Console.ReadLine();
-                await userManagementService.CreateUser(isadmin == "y"? true : false, username, password, false);
+            //List<UserModel> users = await userManagementService.GetAllUsers();
+            //if (users.Count == 0)
+            //{
+            //    Console.WriteLine("No user found, please create a new user");
+            //    Console.WriteLine("Enter a username: ");
+            //    string username = Console.ReadLine();
+            //    Console.WriteLine("Enter a password: ");
+            //    string password = Console.ReadLine();
+            //    Console.WriteLine("Are you an admin? (y/n)");
+            //    string isadmin = Console.ReadLine();
+            //    await userManagementService.CreateUser(isadmin == "y"? true : false, username, password, false);
 
-                currentUser = await userManagementService.GetUser(username);
-            }
-            else
-            {
-                Console.WriteLine("Please select user to use");
-                for (int i = 0; i < users.Count; i++)
-                {
-                    UserModel entry = users[i];
-                    Console.WriteLine($"{i + 1}. {entry.Username}");
-                }
+            //    currentUser = await userManagementService.GetUser(username);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Please select user to use");
+            //    for (int i = 0; i < users.Count; i++)
+            //    {
+            //        UserModel entry = users[i];
+            //        Console.WriteLine($"{i + 1}. {entry.Username}");
+            //    }
 
-                while(currentUser.Username == null)
-                {
-                    Console.Write("Enter the number of the user you want to select: ");
-                    if (int.TryParse(Console.ReadLine(), out int index))
-                    {
-                        if (index > 0 && index <= users.Count)
-                        {
-                            currentUser = users[index - 1];
-                            Console.WriteLine($"You selected user: {currentUser.Username}");
-                        }
-                        else
-                            Console.WriteLine("Invalid selection");
-                    }
-                    else
-                        Console.WriteLine("Invalid input");
-                }
-            }
+            //    while(currentUser.Username == null)
+            //    {
+            //        Console.Write("Enter the number of the user you want to select: ");
+            //        if (int.TryParse(Console.ReadLine(), out int index))
+            //        {
+            //            if (index > 0 && index <= users.Count)
+            //            {
+            //                currentUser = users[index - 1];
+            //                Console.WriteLine($"You selected user: {currentUser.Username}");
+            //            }
+            //            else
+            //                Console.WriteLine("Invalid selection");
+            //        }
+            //        else
+            //            Console.WriteLine("Invalid input");
+            //    }
+            //}
 
             // Main loop to call all the different services and their respective functionalities
             while (true)
@@ -108,7 +162,7 @@ namespace DE_Store_Business_Management_System
                         break;
 
                     case 2:
-                        if (currentUser.IsAdmin)
+                        if (!currentUser.IsAdmin)
                         {
                             Console.Write("Enter a product name: ");
                             string productName2 = Console.ReadLine();
@@ -124,176 +178,176 @@ namespace DE_Store_Business_Management_System
                         else { Console.WriteLine("Only a system admin can take this action!"); }
                         break;
 
-                    case 3:
-                        if (currentUser.IsAdmin)
-                        {
-                            Console.Write("Enter a product name: ");
-                            string productName3 = Console.ReadLine();
-                            Console.Write($"Enter amount of {productName3} bought: ");
-                            string stock = Console.ReadLine();
-                            try 
-                            { 
-                                await inventoryControlService.OrderStock(productName3, int.Parse(stock));
-                                Console.WriteLine($"{stock} {productName3} have been ordered");
-                            }
-                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
-                        }
-                        else { Console.WriteLine("Only a system admin can take this action!"); }
-                        break;
+                    //case 3:
+                    //    if (currentUser.IsAdmin)
+                    //    {
+                    //        Console.Write("Enter a product name: ");
+                    //        string productName3 = Console.ReadLine();
+                    //        Console.Write($"Enter amount of {productName3} bought: ");
+                    //        string stock = Console.ReadLine();
+                    //        try 
+                    //        { 
+                    //            await inventoryControlService.OrderStock(productName3, int.Parse(stock));
+                    //            Console.WriteLine($"{stock} {productName3} have been ordered");
+                    //        }
+                    //        catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                    //    }
+                    //    else { Console.WriteLine("Only a system admin can take this action!"); }
+                    //    break;
 
-                    case 4:
-                        Console.Write("Enter a product name: ");
-                        string productName4 = Console.ReadLine();
-                        try
-                        { Console.WriteLine($"There are {inventoryControlService.MonitorStock(productName4)} units of {productName4}"); }
-                        catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
-                        break;
+                    //case 4:
+                    //    Console.Write("Enter a product name: ");
+                    //    string productName4 = Console.ReadLine();
+                    //    try
+                    //    { Console.WriteLine($"There are {inventoryControlService.MonitorStock(productName4)} units of {productName4}"); }
+                    //    catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                    //    break;
 
-                    case 5:
-                        if(currentUser.IsAdmin)
-                        {
-                            try 
-                            { 
-                                List<ProductModel> products = await inventoryControlService.GenerateWarnings();
+                    //case 5:
+                    //    if(currentUser.IsAdmin)
+                    //    {
+                    //        try 
+                    //        { 
+                    //            List<ProductModel> products = await inventoryControlService.GenerateWarnings();
 
-                                if(products.Count > 0)
-                                {
-                                    Console.WriteLine("Items with low stock: ");
-                                    foreach (ProductModel product in products)
-                                    {
-                                        Console.WriteLine(product.Name);
-                                    }
-                                }
-                                else
-                                {
-                                    Console.WriteLine("There are no items low on stock");
-                                }
+                    //            if(products.Count > 0)
+                    //            {
+                    //                Console.WriteLine("Items with low stock: ");
+                    //                foreach (ProductModel product in products)
+                    //                {
+                    //                    Console.WriteLine(product.Name);
+                    //                }
+                    //            }
+                    //            else
+                    //            {
+                    //                Console.WriteLine("There are no items low on stock");
+                    //            }
                                 
-                            }
-                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
-                        }
-                        else { Console.WriteLine("Only a system admin can take this action!"); }
-                        break;
+                    //        }
+                    //        catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                    //    }
+                    //    else { Console.WriteLine("Only a system admin can take this action!"); }
+                    //    break;
 
-                    case 6:
-                        if (currentUser.IsAdmin)
-                        {
-                            Console.Write("Enter a username: ");
-                            string username = Console.ReadLine();
+                    //case 6:
+                    //    if (currentUser.IsAdmin)
+                    //    {
+                    //        Console.Write("Enter a username: ");
+                    //        string username = Console.ReadLine();
 
-                            try
-                            {
-                                await loyaltyCardService.ApplyLoyaltyCard(username);
-                            }
-                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                    //        try
+                    //        {
+                    //            await loyaltyCardService.ApplyLoyaltyCard(username);
+                    //        }
+                    //        catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
 
-                            Console.WriteLine($"Successfully applied loyalty card to {username}");
-                        }
-                        else { Console.WriteLine("Only a system admin can take this action!"); }
-                        break;
+                    //        Console.WriteLine($"Successfully applied loyalty card to {username}");
+                    //    }
+                    //    else { Console.WriteLine("Only a system admin can take this action!"); }
+                    //    break;
 
-                    case 7:
-                        if (currentUser.IsAdmin)
-                        {
-                            Console.Write("Enter a username: ");
-                            string username = Console.ReadLine();
+                    //case 7:
+                    //    if (currentUser.IsAdmin)
+                    //    {
+                    //        Console.Write("Enter a username: ");
+                    //        string username = Console.ReadLine();
 
-                            try
-                            {
-                                await loyaltyCardService.RemoveLoyaltyCard(username);
-                            }
-                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                    //        try
+                    //        {
+                    //            await loyaltyCardService.RemoveLoyaltyCard(username);
+                    //        }
+                    //        catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
 
-                            Console.WriteLine($"Successfully revoked loyalty from {username}");
-                        }
-                        else { Console.WriteLine("Only a system admin can take this action!"); }
-                        break;
+                    //        Console.WriteLine($"Successfully revoked loyalty from {username}");
+                    //    }
+                    //    else { Console.WriteLine("Only a system admin can take this action!"); }
+                    //    break;
 
-                    case 8:
-                        if (currentUser.IsAdmin)
-                        {
-                            List<UserModel> loyaltyCardHolders = new List<UserModel>();
-                            try
-                            {
-                                loyaltyCardHolders = await loyaltyCardService.LoyaltyCardHolders();
-                            }
-                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                    //case 8:
+                    //    if (currentUser.IsAdmin)
+                    //    {
+                    //        List<UserModel> loyaltyCardHolders = new List<UserModel>();
+                    //        try
+                    //        {
+                    //            loyaltyCardHolders = await loyaltyCardService.LoyaltyCardHolders();
+                    //        }
+                    //        catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
 
-                            if (loyaltyCardHolders.Count > 0)
-                            {
-                                Console.WriteLine("Users with a loyalty card:");
-                                foreach (UserModel possibleLoyaltyCardHolder in loyaltyCardHolders)
-                                    Console.WriteLine(possibleLoyaltyCardHolder.Username);
-                            }
-                            else
-                            {
-                                Console.WriteLine("There are no users with an active loyalty card");
-                            }
-                        }
-                        else { Console.WriteLine("Only a system admin can take this action!"); }
-                        break;
+                    //        if (loyaltyCardHolders.Count > 0)
+                    //        {
+                    //            Console.WriteLine("Users with a loyalty card:");
+                    //            foreach (UserModel possibleLoyaltyCardHolder in loyaltyCardHolders)
+                    //                Console.WriteLine(possibleLoyaltyCardHolder.Username);
+                    //        }
+                    //        else
+                    //        {
+                    //            Console.WriteLine("There are no users with an active loyalty card");
+                    //        }
+                    //    }
+                    //    else { Console.WriteLine("Only a system admin can take this action!"); }
+                    //    break;
 
-                    case 9:
-                        Console.WriteLine("What product would you like to purchase?");
+                    //case 9:
+                    //    Console.WriteLine("What product would you like to purchase?");
 
-                        try
-                        {
-                            List<ProductModel> products9 = await inventoryControlService.GetAllProducts();
-                            for (int i = 0; i < products9.Count; i++)
-                                Console.WriteLine(products9[i].Name);
-                            string productChoice = Console.ReadLine();
+                    //    try
+                    //    {
+                    //        List<ProductModel> products9 = await inventoryControlService.GetAllProducts();
+                    //        for (int i = 0; i < products9.Count; i++)
+                    //            Console.WriteLine(products9[i].Name);
+                    //        string productChoice = Console.ReadLine();
 
-                            Console.WriteLine("How many units would you like to purchase?");
-                            int purchaseAmount = int.Parse(Console.ReadLine());
+                    //        Console.WriteLine("How many units would you like to purchase?");
+                    //        int purchaseAmount = int.Parse(Console.ReadLine());
 
-                            Console.WriteLine("Would you like to buy now and pay later? (y/n)");
-                            bool buyNowPayLater = Console.ReadLine() == "y" ? true : false;
+                    //        Console.WriteLine("Would you like to buy now and pay later? (y/n)");
+                    //        bool buyNowPayLater = Console.ReadLine() == "y" ? true : false;
 
-                            await purchaseManagementService.MakePurchase(currentUser, productChoice, purchaseAmount, buyNowPayLater);
-                        }
-                        catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
-                        break;
+                    //        await purchaseManagementService.MakePurchase(currentUser, productChoice, purchaseAmount, buyNowPayLater);
+                    //    }
+                    //    catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                    //    break;
 
-                    case 10:
-                        if (currentUser.IsAdmin)
-                        {
-                            Console.Write("Enter the number of a user: ");
-                            string user10 = Console.ReadLine();
+                    //case 10:
+                    //    if (currentUser.IsAdmin)
+                    //    {
+                    //        Console.Write("Enter the number of a user: ");
+                    //        string user10 = Console.ReadLine();
 
-                            try
-                            {
-                                UserModel findUser = await userManagementService.GetUser(user10);
-                                List<TransactionModel> userTransactions = await purchaseManagementService.GetUserPurchases(findUser);
+                    //        try
+                    //        {
+                    //            UserModel findUser = await userManagementService.GetUser(user10);
+                    //            List<TransactionModel> userTransactions = await purchaseManagementService.GetUserPurchases(findUser);
 
-                                if (userTransactions.Count < 1)
-                                    Console.WriteLine("This user has no past transactions");
-                                else
-                                {
-                                    foreach (TransactionModel transaction in userTransactions)
-                                        Console.WriteLine($"username: {findUser.Username}, product bought: {transaction.Product}, amount bought: {transaction.Amount}, buyNowPayLater: {transaction.BuyNowPayLater}");
-                                }
+                    //            if (userTransactions.Count < 1)
+                    //                Console.WriteLine("This user has no past transactions");
+                    //            else
+                    //            {
+                    //                foreach (TransactionModel transaction in userTransactions)
+                    //                    Console.WriteLine($"username: {findUser.Username}, product bought: {transaction.Product}, amount bought: {transaction.Amount}, buyNowPayLater: {transaction.BuyNowPayLater}");
+                    //            }
 
-                            }
-                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
-                        }
-                        break;
+                    //        }
+                    //        catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                    //    }
+                    //    break;
 
-                    case 11:
-                        if (currentUser.IsAdmin)
-                        {
-                            try
-                            {
-                                List<TransactionModel> transactions = await reportAndAnalysisService.StoreAnalysis();
-                                foreach (TransactionModel transaction in transactions)
-                                    Console.WriteLine($"username: {transaction.User.Username}, product bought: {transaction.Product}, amount bought: {transaction.Amount}, buyNowPayLater: {transaction.BuyNowPayLater}");
-                            }
-                            catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
-                        }
-                        break;
+                    //case 11:
+                    //    if (currentUser.IsAdmin)
+                    //    {
+                    //        try
+                    //        {
+                    //            List<TransactionModel> transactions = await reportAndAnalysisService.StoreAnalysis();
+                    //            foreach (TransactionModel transaction in transactions)
+                    //                Console.WriteLine($"username: {transaction.User.Username}, product bought: {transaction.Product}, amount bought: {transaction.Amount}, buyNowPayLater: {transaction.BuyNowPayLater}");
+                    //        }
+                    //        catch (Exception ex) { Console.WriteLine($"Error: {ex.Message}"); }
+                    //    }
+                    //    break;
 
-                    default:
-                        Console.WriteLine("Inavid option");
-                        break;
+                    //default:
+                    //    Console.WriteLine("Inavid option");
+                    //    break;
                 }
             }
 
