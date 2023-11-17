@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1abtZaxyvcCxMFVW550Tka5apf1NCClmnj/BkSbs/VwebCUqjQRZ78IreJ9AjfbWZcURtxKcKZ01z9YYegCpHw==",
+  "dgSpecHash": "2JVrlDp9dvFvI1QKjxUa8R6UsteRXqEg/c8DYTBvYBnw9RM5+qaFAkGK82q3WtQmW7OPm8jSlDM7HtTDsRBTLQ==",
   "success": true,
-  "projectFilePath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj",
+  "projectFilePath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\matti\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\matti\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

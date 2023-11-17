@@ -1,8 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using ZstdSharp.Unsafe;
 
-namespace DataAccessLayer;
+namespace SharedModels;
 
 public class ProductModel
 {

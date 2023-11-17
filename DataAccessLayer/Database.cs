@@ -10,7 +10,7 @@ using static MongoDB.Driver.WriteConcern;
 
 namespace DataAccessLayer;
 
-public class Database
+public class Database : IDatabase
 {
     public static MongoClient client;
     public static IMongoDatabase database;
@@ -42,8 +42,8 @@ public class Database
 
         try
         {
-            var collection = database.GetCollection<ProductModel>("Products");
-            var entry = new ProductModel(name, price, stock);
+            var collection = database.GetCollection<SharedModels.ProductModel>("Products");
+            var entry = new SharedModels.ProductModel(name, price, stock);
             await collection.InsertOneAsync(entry);
         }
         catch (Exception ex)
@@ -53,21 +53,21 @@ public class Database
         Console.WriteLine($"Product with name {name} has been successfully inserted");
     }
 
-    public async Task<ProductModel> GetProduct<T>(string findBy, T value)
+    public async Task<SharedModels.ProductModel> GetProduct<T>(string findBy, T value)
     {
         if (findBy.ToLower() != "name" && findBy.ToLower() != "price" && findBy.ToLower() != "stock") { throw new FormatException($"{findBy} is not a valid parameter"); }
 
-        var collection = database.GetCollection<ProductModel>("Products");
+        var collection = database.GetCollection<SharedModels.ProductModel>("Products");
 
         try
         {
             if (findBy.ToLower() == "name" && value is string)
             {
-                var filter = Builders<ProductModel>.Filter.Eq("Name", value);
+                var filter = Builders<SharedModels.ProductModel>.Filter.Eq("Name", value);
                 var documents = await collection.FindAsync(filter);
                 var results = await documents.ToListAsync();
 
-                return results.Select(document => new ProductModel(
+                return results.Select(document => new SharedModels.ProductModel(
                     document.Name,
                     document.Price,
                     document.Stock
@@ -75,11 +75,11 @@ public class Database
             }
             else if(findBy.ToLower() == "price" && value is double || value is int)
             {
-                var filter = Builders<ProductModel>.Filter.Eq("price", value);
+                var filter = Builders<SharedModels.ProductModel>.Filter.Eq("price", value);
                 var documents = await collection.FindAsync(filter);
                 var results = await documents.ToListAsync();
 
-                return results.Select(document => new ProductModel(
+                return results.Select(document => new SharedModels.ProductModel(
                     document.Name,
                     document.Price,
                     document.Stock
@@ -87,11 +87,11 @@ public class Database
             }
             else if (findBy.ToLower() == "stock" && value is int)
             {
-                var filter = Builders<ProductModel>.Filter.Eq("stock", value);
+                var filter = Builders<SharedModels.ProductModel>.Filter.Eq("stock", value);
                 var documents = await collection.FindAsync(filter);
                 var results = await documents.ToListAsync();
 
-                return results.Select(document => new ProductModel(
+                return results.Select(document => new SharedModels.ProductModel(
                     document.Name,
                     document.Price,
                     document.Stock
@@ -99,7 +99,7 @@ public class Database
             }
             else
             {
-                return new ProductModel("", 0.0, 0);
+                return new SharedModels.ProductModel("", 0.0, 0);
             }
 
         }
@@ -107,12 +107,12 @@ public class Database
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
-        return new ProductModel("", 0.0, 0);
+        return new SharedModels.ProductModel("", 0.0, 0);
     }
 
-    public async Task<List<ProductModel>> GetAllProducts()
+    public async Task<List<SharedModels.ProductModel>> GetAllProducts()
     {
-        var collection = database.GetCollection<ProductModel>("Products");
+        var collection = database.GetCollection<SharedModels.ProductModel>("Products");
 
         try
         {
@@ -125,19 +125,19 @@ public class Database
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
-        return new List<ProductModel> { };
+        return new List<SharedModels.ProductModel> { };
     }
 
     public async Task DeleteProduct(string name)
     {
         if (string.IsNullOrEmpty(name)) { throw new FormatException("Name provided is empty"); }
 
-        var filter = Builders<ProductModel>.Filter.Eq("Name", name);
+        var filter = Builders<SharedModels.ProductModel>.Filter.Eq("Name", name);
 
         try
         {
             database.CreateCollection("Products");
-            var collection = database.GetCollection<ProductModel>("Products");
+            var collection = database.GetCollection<SharedModels.ProductModel>("Products");
 
             collection.DeleteOne(filter);
         }
@@ -153,26 +153,26 @@ public class Database
     {
         if (attibute.ToLower() != "name" && attibute.ToLower() != "price" && attibute.ToLower() != "stock") { throw new FormatException($"{attibute} is not a valid parameter"); }
 
-        var collection = database.GetCollection<ProductModel>("Products");
+        var collection = database.GetCollection<SharedModels.ProductModel>("Products");
 
         try
         {
             if (attibute.ToLower() == "name")
             {
-                var filter = Builders<ProductModel>.Filter.Eq("Name", name);
-                var update = Builders<ProductModel>.Update.Set("Name", newValue);
+                var filter = Builders<SharedModels.ProductModel>.Filter.Eq("Name", name);
+                var update = Builders<SharedModels.ProductModel>.Update.Set("Name", newValue);
                 collection.UpdateOne(filter, update);
             }
             else if (attibute.ToLower() == "price")
             {
-                var filter = Builders<ProductModel>.Filter.Eq("Name", name);
-                var update = Builders<ProductModel>.Update.Set("Price", newValue);
+                var filter = Builders<SharedModels.ProductModel>.Filter.Eq("Name", name);
+                var update = Builders<SharedModels.ProductModel>.Update.Set("Price", newValue);
                 collection.UpdateOne(filter, update);
             }
             else if (attibute.ToLower() == "stock")
             {
-                var filter = Builders<ProductModel>.Filter.Eq("Name", name);
-                var update = Builders<ProductModel>.Update.Set("Stock", newValue);
+                var filter = Builders<SharedModels.ProductModel>.Filter.Eq("Name", name);
+                var update = Builders<SharedModels.ProductModel>.Update.Set("Stock", newValue);
                 collection.UpdateOne(filter, update);
             }
             else
@@ -194,8 +194,8 @@ public class Database
         try
         {
             database.CreateCollection("Users");
-            var collection = database.GetCollection<UserModel>("Users");
-            var entry = new UserModel(isAdmin, username, password, haveLoyaltyCard);
+            var collection = database.GetCollection<SharedModels.UserModel>("Users");
+            var entry = new SharedModels.UserModel(isAdmin, username, password, haveLoyaltyCard);
             await collection.InsertOneAsync(entry);
         }
         catch (Exception ex)
@@ -205,19 +205,19 @@ public class Database
         Console.WriteLine($"User {username} has been successfully created");
     }
 
-    public async Task<UserModel> GetUser(string username)
+    public async Task<SharedModels.UserModel> GetUser(string username)
     {
         if (string.IsNullOrEmpty(username)) { throw new FormatException($"{username} is not a valid username"); }
 
-        var collection = database.GetCollection<UserModel>("Users");
+        var collection = database.GetCollection<SharedModels.UserModel>("Users");
 
         try
         {
-            var filter = Builders<UserModel>.Filter.Eq("Username", username);
+            var filter = Builders<SharedModels.UserModel>.Filter.Eq("Username", username);
             var documents = await collection.FindAsync(filter);
             var results = await documents.ToListAsync();
 
-            return results.Select(document => new UserModel(
+            return results.Select(document => new SharedModels.UserModel(
                 document.IsAdmin,
                 document.Username,
                 document.Password,
@@ -228,12 +228,12 @@ public class Database
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
-        return new UserModel();
+        return new SharedModels.UserModel();
     }
 
-    public async Task<List<UserModel>> GetAllUsers()
+    public async Task<List<SharedModels.UserModel>> GetAllUsers()
     {
-        var collection = database.GetCollection<UserModel>("Users");
+        var collection = database.GetCollection<SharedModels.UserModel>("Users");
 
         try
         {
@@ -246,7 +246,7 @@ public class Database
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
-        return new List<UserModel> { };
+        return new List<SharedModels.UserModel> { };
     }
 
     public async Task UpdateUser<T>(string username, string attribute, T newValue)
@@ -254,12 +254,12 @@ public class Database
         if (string.IsNullOrEmpty(username)) { throw new FormatException($"{username} is not a valid username"); }
         if(attribute.ToLower() != "isadmin" && attribute.ToLower() != "username" && attribute.ToLower() != "password" && attribute.ToLower() != "haveloyaltycard") { throw new FormatException($"{attribute} is not a valid attribute"); }
 
-        var collection = database.GetCollection<UserModel>("Users");
+        var collection = database.GetCollection<SharedModels.UserModel>("Users");
 
         try
         {
-            var filter = Builders<UserModel>.Filter.Eq("Username", username);
-            var update = Builders<UserModel>.Update.Set(attribute, newValue);
+            var filter = Builders<SharedModels.UserModel>.Filter.Eq("Username", username);
+            var update = Builders<SharedModels.UserModel>.Update.Set(attribute, newValue);
             collection.UpdateOne(filter, update);
         }
         catch (Exception ex)
@@ -268,12 +268,12 @@ public class Database
         }
     }
 
-    public async Task CreateTransaction(UserModel user, string product, int amount, bool buyNowPayLater)
+    public async Task CreateTransaction(SharedModels.UserModel user, string product, int amount, bool buyNowPayLater)
     {
         try
         {
-            var collection = database.GetCollection<TransactionModel>("Transactions");
-            var entry = new TransactionModel(user, product, amount, buyNowPayLater);
+            var collection = database.GetCollection<SharedModels.TransactionModel>("Transactions");
+            var entry = new SharedModels.TransactionModel(user, product, amount, buyNowPayLater);
             await collection.InsertOneAsync(entry);
         }
         catch (Exception ex)
@@ -283,13 +283,13 @@ public class Database
         Console.WriteLine($"Successfully purchased {amount} {product}");
     }
 
-    public async Task<List<TransactionModel>> GetUserTransactions(UserModel user)
+    public async Task<List<SharedModels.TransactionModel>> GetUserTransactions(SharedModels.UserModel user)
     {
-        var collection = database.GetCollection<TransactionModel>("Transactions");
+        var collection = database.GetCollection<SharedModels.TransactionModel>("Transactions");
 
         try
         {
-            var filter = Builders<TransactionModel>.Filter.Eq("User.Username", user.Username);
+            var filter = Builders<SharedModels.TransactionModel>.Filter.Eq("User.Username", user.Username);
             var documents = await collection.FindAsync(filter);
             var results = await documents.ToListAsync();
 
@@ -299,12 +299,12 @@ public class Database
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
-        return new List<TransactionModel>();
+        return new List<SharedModels.TransactionModel>();
     }
 
-    public async Task<List<TransactionModel>> GetAllTransactions()
+    public async Task<List<SharedModels.TransactionModel>> GetAllTransactions()
     {
-        var collection = database.GetCollection<TransactionModel>("Transactions");
+        var collection = database.GetCollection<SharedModels.TransactionModel>("Transactions");
 
         try
         {
@@ -317,6 +317,6 @@ public class Database
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
-        return new List<TransactionModel>();
+        return new List<SharedModels.TransactionModel>();
     }
 }

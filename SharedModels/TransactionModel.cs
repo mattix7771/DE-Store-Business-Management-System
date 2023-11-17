@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace DataAccessLayer;
+namespace SharedModels;
 
 public class TransactionModel
 {
