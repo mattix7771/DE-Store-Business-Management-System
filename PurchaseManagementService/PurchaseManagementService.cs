@@ -1,10 +1,11 @@
 ﻿using DataAccessLayer;
 using FinanceApprovalService;
+using SharedModels;
 
 namespace PurchaseManagementService;
 
 /* PurchaseManagementService is a service that manages purchases and transactions */
-public class PurchaseManagementService
+public class PurchaseManagementService : IPurchaseManagementService
 {
     // Database variable to communicate with database
     DataAccessLayer.Database db = new DataAccessLayer.Database();
@@ -21,7 +22,7 @@ public class PurchaseManagementService
         if (buyNowPayLater)
         {
             FinanceApprovalService.FinanceApprovalService financeApprovalService= new FinanceApprovalService.FinanceApprovalService();
-            financeApprovalService.ApproveFinanace();
+            financeApprovalService.ApproveFinance();
         }
         await db.CreateTransaction(user, product, amount, buyNowPayLater);
         ProductModel getProduct = await db.GetProduct("Name", product);

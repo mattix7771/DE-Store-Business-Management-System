@@ -1,10 +1,10 @@
 ﻿using DataAccessLayer;
-using System.Reflection.Metadata.Ecma335;
+using SharedModels;
 
 namespace ReportAndAnalysisService;
 
 /* ReportAndAnalysisService is a service that produces valuable statistics about the store */
-public class ReportAndAnalysisService
+public class ReportAndAnalysisService : IReportAndAnalysisService
 {
     // Database variable to communicate with database
     DataAccessLayer.Database db = new DataAccessLayer.Database();

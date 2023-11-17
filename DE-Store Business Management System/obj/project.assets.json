@@ -297,7 +297,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "SharedModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DataAccessLayer.dll": {}
@@ -324,7 +325,8 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "SharedModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/InventoryControlService.dll": {}
@@ -352,7 +354,8 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "SharedModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/PriceControlService.dll": {}
@@ -366,7 +369,8 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "FinanceApprovalService": "1.0.0"
+          "FinanceApprovalService": "1.0.0",
+          "SharedModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/PurchaseManagementService.dll": {}
@@ -387,6 +391,19 @@
         },
         "runtime": {
           "bin/placeholder/ReportAndAnalysisService.dll": {}
+        }
+      },
+      "SharedModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MongoDB.Driver": "2.22.0"
+        },
+        "compile": {
+          "bin/placeholder/SharedModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharedModels.dll": {}
         }
       },
       "UserManagementService/1.0.0": {
@@ -920,6 +937,11 @@
       "type": "project",
       "path": "../ReportAndAnalysisService/ReportAndAnalysisService.csproj",
       "msbuildProject": "../ReportAndAnalysisService/ReportAndAnalysisService.csproj"
+    },
+    "SharedModels/1.0.0": {
+      "type": "project",
+      "path": "../SharedModels/SharedModels.csproj",
+      "msbuildProject": "../SharedModels/SharedModels.csproj"
     },
     "UserManagementService/1.0.0": {
       "type": "project",

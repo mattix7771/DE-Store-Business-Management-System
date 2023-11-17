@@ -1,11 +1,12 @@
 ﻿using DataAccessLayer;
+using SharedModels;
 
 namespace InventoryControlService;
 
 /* InventoryControlService is a service that manages stock of products, including:
  ordering new stock for products that are low on stock, monitor stock of products, and
 generate warnings if a product has less than 10 units in stock*/
-public class InventoryControlService
+public class InventoryControlService : IInventoryControlService
 {
     // Database variable to communicate with database
     DataAccessLayer.Database db = new DataAccessLayer.Database();

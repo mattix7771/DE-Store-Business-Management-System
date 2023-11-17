@@ -297,7 +297,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "SharedModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DataAccessLayer.dll": {}
@@ -317,6 +318,19 @@
         },
         "runtime": {
           "bin/placeholder/FinanceApprovalService.dll": {}
+        }
+      },
+      "SharedModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MongoDB.Driver": "2.22.0"
+        },
+        "compile": {
+          "bin/placeholder/SharedModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharedModels.dll": {}
         }
       }
     }
@@ -812,12 +826,18 @@
       "type": "project",
       "path": "../FinanceApprovalService/FinanceApprovalService.csproj",
       "msbuildProject": "../FinanceApprovalService/FinanceApprovalService.csproj"
+    },
+    "SharedModels/1.0.0": {
+      "type": "project",
+      "path": "../SharedModels/SharedModels.csproj",
+      "msbuildProject": "../SharedModels/SharedModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "DataAccessLayer >= 1.0.0",
-      "FinanceApprovalService >= 1.0.0"
+      "FinanceApprovalService >= 1.0.0",
+      "SharedModels >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -852,6 +872,9 @@
             },
             "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj": {
               "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj"
+            },
+            "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj": {
+              "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj"
             }
           }
         }

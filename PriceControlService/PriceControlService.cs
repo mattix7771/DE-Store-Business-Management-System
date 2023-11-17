@@ -1,9 +1,10 @@
 ﻿using DataAccessLayer;
+using SharedModels;
 
 namespace PriceControlService;
 
 /* PriceControlService is a service that manages the price of products */
-public class PriceControlService
+public class PriceControlService : IPriceControlService
 {
     // Database variable to communicate with database
     DataAccessLayer.Database db = new DataAccessLayer.Database();

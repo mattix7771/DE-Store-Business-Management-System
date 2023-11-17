@@ -1,9 +1,10 @@
 ﻿using DataAccessLayer;
+using SharedModels;
 
 namespace UserManagementService;
 
 /* UserManagementService is a service that manages users */
-public class UserManagementService
+public class UserManagementService : IUserManagementService
 {
     // Database variable to communicate with database
     DataAccessLayer.Database db = new DataAccessLayer.Database();

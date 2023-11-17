@@ -4,7 +4,7 @@ namespace LoyaltyCardService;
 
 /* LoyaltyCardService is a service that manages user's loyalty cards, including:
  applying and revoking a loyalty card from a user, and getting all users with a loyalty card*/
-public class LoyaltyCardService
+public class LoyaltyCardService : ILoyaltyCardService
 {
     // Database variable to communicate with database
     DataAccessLayer.Database db = new DataAccessLayer.Database();
@@ -45,13 +45,13 @@ public class LoyaltyCardService
     /// Gets all users who have a loyalty card
     /// </summary>
     /// <returns> A list of all users who have a loyalty card </returns>
-    public async Task<List<UserModel>> LoyaltyCardHolders()
+    public async Task<List<SharedModels.UserModel>> LoyaltyCardHolders()
     {
-        List<UserModel> loyaltyCardHolders = new List<UserModel>();
+        List<SharedModels.UserModel> loyaltyCardHolders = new List<SharedModels.UserModel>();
         try
         {
-            List<UserModel> allUsers = await db.GetAllUsers();
-            foreach (UserModel user in allUsers)
+            List<SharedModels.UserModel> allUsers = await db.GetAllUsers();
+            foreach (SharedModels.UserModel user in allUsers)
             {
                 if (user.HaveLoyaltyCard)
                     loyaltyCardHolders.Add(user);
