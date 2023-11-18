@@ -62,10 +62,24 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Loyalty Cards">
-                <Grid Background="#FFE5E5E5">
+                <Grid x:Name="loyaltyGrid" Background="#FFE5E5E5">
                     <Label Content="Apply loyalty card" HorizontalAlignment="Left" Margin="19,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
                     <Label Content="User's username" HorizontalAlignment="Left" Margin="19,46,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBox x:Name="txt_applyLoyaltyUsername" TextWrapping="Wrap" Margin="22,73,644,324"/>
+                    <Button x:Name="btn_applyLoyalty" Content="Apply" HorizontalAlignment="Left" Margin="116,109,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_applyLoyalty_Click"/>
+                    <Label x:Name="lbl_loyaltyWarning" Content="" HorizontalAlignment="Left" Margin="255,365,0,0" VerticalAlignment="Top" Width="311" Height="38"/>
+                    <Label Content="Apply loyalty card" HorizontalAlignment="Left" Margin="309,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label Content="User's username" HorizontalAlignment="Left" Margin="309,47,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="txt_removeLoyaltyUsername" TextWrapping="Wrap" Margin="309,73,357,324"/>
+                    <Button x:Name="btn_removeLoyalty" Content="Remove" HorizontalAlignment="Left" Margin="397,109,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_removeLoyalty_Click"/>
+                    <Label Content="Current loyalty card holders" HorizontalAlignment="Left" Margin="522,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <ListView x:Name="loyaltyList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="522,60,10,10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
             </TabItem>
             <TabItem Header="Users">
@@ -77,7 +91,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="btn_applyLoyalty" Content="Create" HorizontalAlignment="Left" Margin="116,134,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_applyLoyalty_Click"/>
+
 
     </Grid>
 </Page>
