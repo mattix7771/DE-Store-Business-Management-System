@@ -9,7 +9,9 @@
       "LoyaltyCardService/1.0.0": {
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "ServiceDiscovery": "1.0.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "LoyaltyCardService.dll": {}
@@ -173,6 +175,11 @@
           "DataAccessLayer.dll": {}
         }
       },
+      "ServiceDiscovery/1.0.0": {
+        "runtime": {
+          "ServiceDiscovery.dll": {}
+        }
+      },
       "SharedModels/1.0.0": {
         "dependencies": {
           "MongoDB.Driver": "2.22.0"
@@ -316,6 +323,11 @@
       "hashPath": "zstdsharp.port.0.6.2.nupkg.sha512"
     },
     "DataAccessLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ServiceDiscovery/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -28,6 +28,7 @@
         Task CreateTransaction(SharedModels.UserModel user, string product, int amount, bool buyNowPayLater);
         Task UpdateProduct<T>(string name, string attribute, T newValue);
         Task<List<SharedModels.TransactionModel>> GetUserTransactions(SharedModels.UserModel user);
+        Task<SharedModels.ProductModel> GetProduct<T>(string findBy, T value);
     }
     public interface IUserManagement
     {

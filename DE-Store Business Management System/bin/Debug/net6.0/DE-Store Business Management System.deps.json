@@ -191,6 +191,7 @@
         "dependencies": {
           "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0",
+          "ServiceDiscovery": "1.0.0",
           "SharedModels": "1.0.0"
         },
         "runtime": {
@@ -200,7 +201,9 @@
       "LoyaltyCardService/1.0.0": {
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "ServiceDiscovery": "1.0.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "LoyaltyCardService.dll": {}
@@ -221,6 +224,7 @@
         "dependencies": {
           "DataAccessLayer": "1.0.0",
           "FinanceApprovalService": "1.0.0",
+          "ServiceDiscovery": "1.0.0",
           "SharedModels": "1.0.0"
         },
         "runtime": {
@@ -230,7 +234,9 @@
       "ReportAndAnalysisService/1.0.0": {
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "ServiceDiscovery": "1.0.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "ReportAndAnalysisService.dll": {}
@@ -251,7 +257,9 @@
       },
       "UserManagementService/1.0.0": {
         "dependencies": {
-          "DataAccessLayer": "1.0.0"
+          "DataAccessLayer": "1.0.0",
+          "ServiceDiscovery": "1.0.0",
+          "SharedModels": "1.0.0"
         },
         "runtime": {
           "UserManagementService.dll": {}

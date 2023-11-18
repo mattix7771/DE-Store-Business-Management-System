@@ -1,4 +1,6 @@
 ﻿using DataAccessLayer;
+using ServiceDiscovery;
+using SharedModels;
 
 namespace LoyaltyCardService;
 
@@ -6,8 +8,12 @@ namespace LoyaltyCardService;
  applying and revoking a loyalty card from a user, and getting all users with a loyalty card*/
 public class LoyaltyCardService : ILoyaltyCardService
 {
-    // Database variable to communicate with database
-    DataAccessLayer.Database db = new DataAccessLayer.Database();
+    // Registry setup to access relevant database actions
+    private readonly IServiceRegistry serviceRegistry;
+    public LoyaltyCardService(IServiceRegistry serviceRegistry)
+    {
+        this.serviceRegistry = serviceRegistry ?? throw new ArgumentNullException(nameof(serviceRegistry));
+    }
 
     /// <summary>
     /// Applies a loyalty card to a user
@@ -17,6 +23,8 @@ public class LoyaltyCardService : ILoyaltyCardService
     {
         try
         {
+            // Get relevant database actions
+            ILoyaltyCard db = serviceRegistry.GetService<ILoyaltyCard>();
             await db.UpdateUser(username, "HaveLoyaltyCard", true);
         }
         catch (Exception ex)
@@ -33,6 +41,8 @@ public class LoyaltyCardService : ILoyaltyCardService
     {
         try
         {
+            // Get relevant database actions
+            ILoyaltyCard db = serviceRegistry.GetService<ILoyaltyCard>();
             await db.UpdateUser(username, "HaveLoyaltyCard", false);
         }
         catch (Exception ex)
@@ -50,6 +60,9 @@ public class LoyaltyCardService : ILoyaltyCardService
         List<SharedModels.UserModel> loyaltyCardHolders = new List<SharedModels.UserModel>();
         try
         {
+            // Get relevant database actions
+            ILoyaltyCard db = serviceRegistry.GetService<ILoyaltyCard>();
+
             List<SharedModels.UserModel> allUsers = await db.GetAllUsers();
             foreach (SharedModels.UserModel user in allUsers)
             {

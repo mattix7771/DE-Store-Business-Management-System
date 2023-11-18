@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer;
+using ServiceDiscovery;
 using FinanceApprovalService;
 using SharedModels;
 
@@ -7,8 +8,12 @@ namespace PurchaseManagementService;
 /* PurchaseManagementService is a service that manages purchases and transactions */
 public class PurchaseManagementService : IPurchaseManagementService
 {
-    // Database variable to communicate with database
-    DataAccessLayer.Database db = new DataAccessLayer.Database();
+    // Registry setup to access relevant database actions
+    private readonly IServiceRegistry serviceRegistry;
+    public PurchaseManagementService(IServiceRegistry serviceRegistry)
+    {
+        this.serviceRegistry = serviceRegistry ?? throw new ArgumentNullException(nameof(serviceRegistry));
+    }
 
     /// <summary>
     /// Creates a purchase transaction and adjusts corresponding stock values
@@ -19,14 +24,24 @@ public class PurchaseManagementService : IPurchaseManagementService
     /// <param buyNowPayLater> Whether the user has applied for the buy now pay later service </param>
     public async Task MakePurchase(UserModel user, string product, int amount, bool buyNowPayLater)
     {
-        if (buyNowPayLater)
+        try
         {
-            FinanceApprovalService.FinanceApprovalService financeApprovalService= new FinanceApprovalService.FinanceApprovalService();
-            financeApprovalService.ApproveFinance();
+            // Get relevant database actions
+            IPurchaseManagement db = serviceRegistry.GetService<IPurchaseManagement>();
+
+            if (buyNowPayLater)
+            {
+                FinanceApprovalService.FinanceApprovalService financeApprovalService= new FinanceApprovalService.FinanceApprovalService();
+                financeApprovalService.ApproveFinance();
+            }
+            await db.CreateTransaction(user, product, amount, buyNowPayLater);
+            ProductModel getProduct = await db.GetProduct("Name", product);
+            await db.UpdateProduct(product, "Stock", getProduct.Stock - amount);
         }
-        await db.CreateTransaction(user, product, amount, buyNowPayLater);
-        ProductModel getProduct = await db.GetProduct("Name", product);
-        await db.UpdateProduct(product, "Stock", getProduct.Stock - amount);
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
     }
 
     /// <summary>
@@ -36,7 +51,18 @@ public class PurchaseManagementService : IPurchaseManagementService
     /// <returns> A list of all the purchases made by an user </returns>
     public async Task<List<TransactionModel>> GetUserPurchases(UserModel user)
     {
-        List<TransactionModel> transactions = await db.GetUserTransactions(user);
+        List<TransactionModel> transactions = new List<TransactionModel>();
+        try
+        {
+            // Get relevant database actions
+            IPurchaseManagement db = serviceRegistry.GetService<IPurchaseManagement>();
+
+            transactions = await db.GetUserTransactions(user);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
         return transactions;
     }
 }

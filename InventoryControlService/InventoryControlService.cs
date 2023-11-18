@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer;
+using ServiceDiscovery;
 using SharedModels;
 
 namespace InventoryControlService;
@@ -8,8 +9,12 @@ namespace InventoryControlService;
 generate warnings if a product has less than 10 units in stock*/
 public class InventoryControlService : IInventoryControlService
 {
-    // Database variable to communicate with database
-    DataAccessLayer.Database db = new DataAccessLayer.Database();
+    // Registry setup to access relevant database actions
+    private readonly IServiceRegistry serviceRegistry;
+    public InventoryControlService(IServiceRegistry serviceRegistry)
+    {
+        this.serviceRegistry = serviceRegistry ?? throw new ArgumentNullException(nameof(serviceRegistry));
+    }
 
     /// <summary>
     /// Orders stock for products
@@ -18,10 +23,20 @@ public class InventoryControlService : IInventoryControlService
     /// <param stockOrdered> The stock ordered for the product </param>
     public async Task OrderStock(string productName, int stockOrdered)
     {
-        Task<ProductModel> product = db.GetProduct("name", productName);
+        try
+        {
+            // Get relevant database actions
+            IInventoryControl db = serviceRegistry.GetService<IInventoryControl>();
 
-        int newStock = product.Result.Stock += stockOrdered;
-        await db.UpdateProduct(productName, "stock", newStock);
+            ProductModel product = await db.GetProduct("name", productName);
+
+            int newStock = product.Stock += stockOrdered;
+            await db.UpdateProduct(productName, "stock", newStock);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
     }
 
     /// <summary>
@@ -29,11 +44,21 @@ public class InventoryControlService : IInventoryControlService
     /// </summary>
     /// <param productName> The name of the product whose stock must be checked </param>
     /// <returns> The stock of a product </returns>
-    public int MonitorStock(string productName)
+    public async Task<int> MonitorStock(string productName)
     {
-        Task<ProductModel> product = db.GetProduct("name", productName);
+        ProductModel product = null;
+        try
+        {
+            // Get relevant database actions
+            IInventoryControl db = serviceRegistry.GetService<IInventoryControl>();
 
-        return product.Result.Stock;
+            product = await db.GetProduct("name", productName);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        return product.Stock;
     }
 
     /// <summary>
@@ -42,15 +67,27 @@ public class InventoryControlService : IInventoryControlService
     /// <returns> A list of products low on stock </returns>
     public async Task<List<ProductModel>> GenerateWarnings()
     {
-        List<ProductModel> products = await db.GetAllProducts();
         List<ProductModel> productsLowStock = new List<ProductModel>();
 
-        for (int i = 0; i < products.Count; i++)
+        try
         {
-            ProductModel product = products[i];
-            if(product.Stock < 10)
-                productsLowStock.Add(product);
+            // Get relevant database actions
+            IInventoryControl db = serviceRegistry.GetService<IInventoryControl>();
+
+            List<ProductModel> products = await db.GetAllProducts();
+
+            for (int i = 0; i < products.Count; i++)
+            {
+                ProductModel product = products[i];
+                if(product.Stock < 10)
+                    productsLowStock.Add(product);
+            }
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+
         return productsLowStock;
     }
 
@@ -60,7 +97,19 @@ public class InventoryControlService : IInventoryControlService
     /// <returns> a list of all avaliable products </returns>
     public async Task<List<ProductModel>> GetAllProducts()
     {
-        List<ProductModel> products = await db.GetAllProducts();
+        List<ProductModel> products = new List<ProductModel>();
+        try
+        {
+            // Get relevant database actions
+            IInventoryControl db = serviceRegistry.GetService<IInventoryControl>();
+
+            products = await db.GetAllProducts();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        
         return products;
     }
 
@@ -70,6 +119,16 @@ public class InventoryControlService : IInventoryControlService
     /// <param productName> The name of the product whose stock must be checked </param>
     public async Task DeleteProduct(string productName)
     {
-        await db.DeleteProduct(productName);
+        try
+        {
+            // Get relevant database actions
+            IInventoryControl db = serviceRegistry.GetService<IInventoryControl>();
+
+            await db.DeleteProduct(productName);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
     }
 }

@@ -326,6 +326,7 @@
         "dependencies": {
           "DataAccessLayer": "1.0.0",
           "MongoDB.Driver": "2.22.0",
+          "ServiceDiscovery": "1.0.0",
           "SharedModels": "1.0.0"
         },
         "compile": {
@@ -340,7 +341,9 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "ServiceDiscovery": "1.0.0",
+          "SharedModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/LoyaltyCardService.dll": {}
@@ -371,6 +374,7 @@
         "dependencies": {
           "DataAccessLayer": "1.0.0",
           "FinanceApprovalService": "1.0.0",
+          "ServiceDiscovery": "1.0.0",
           "SharedModels": "1.0.0"
         },
         "compile": {
@@ -385,7 +389,9 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "DataAccessLayer": "1.0.0",
-          "MongoDB.Driver": "2.22.0"
+          "MongoDB.Driver": "2.22.0",
+          "ServiceDiscovery": "1.0.0",
+          "SharedModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ReportAndAnalysisService.dll": {}
@@ -421,7 +427,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "DataAccessLayer": "1.0.0"
+          "DataAccessLayer": "1.0.0",
+          "ServiceDiscovery": "1.0.0",
+          "SharedModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/UserManagementService.dll": {}

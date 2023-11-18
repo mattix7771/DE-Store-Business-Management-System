@@ -15,3 +15,5 @@ X:\Library\Documents\repos\DE-Store Business Management System\UserManagementSer
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\obj\Debug\net6.0\ref\UserManagementService.dll
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\SharedModels.dll
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\SharedModels.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\ServiceDiscovery.dll
+X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\ServiceDiscovery.pdb
