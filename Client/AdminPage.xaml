@@ -15,28 +15,28 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Create Product" HorizontalAlignment="Left" Margin="19,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Delete Product" HorizontalAlignment="Left" Margin="19,288,0,103" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="19,46,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Product price" HorizontalAlignment="Left" Margin="19,107,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Product stock" HorizontalAlignment="Left" Margin="19,169,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="19,324,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Button x:Name="btn_create" Content="Create" HorizontalAlignment="Left" Margin="115,235,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_create_Click"/>
-                    <Button x:Name="btn_delete" Content="Delete" HorizontalAlignment="Left" Margin="115,384,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_delete_Click"/>
+                    <Label Content="Delete Product" HorizontalAlignment="Left" Margin="19,278,0,113" FontSize="16" FontWeight="Bold"/>
+                    <Label Content="Product name" HorizontalAlignment="Left" Margin="19,43,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="Product price" HorizontalAlignment="Left" Margin="19,101,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="Product stock" HorizontalAlignment="Left" Margin="19,162,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="Product name" HorizontalAlignment="Left" Margin="19,314,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Button x:Name="btn_create" Content="Create" HorizontalAlignment="Left" Margin="115,227,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_create_Click"/>
+                    <Button x:Name="btn_delete" Content="Delete" HorizontalAlignment="Left" Margin="115,374,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_delete_Click"/>
                     <Label Content="Get Product Price" HorizontalAlignment="Left" Margin="300,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="300,46,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="Product name" HorizontalAlignment="Left" Margin="300,41,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label Content="Set Product Price" HorizontalAlignment="Left" Margin="300,157,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
                     <Label Content="Product name" HorizontalAlignment="Left" Margin="300,188,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="300,253,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Button x:Name="btn_getProduct" Content="Get price" HorizontalAlignment="Left" Margin="402,109,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_getProduct_Click"/>
-                    <Button x:Name="btn_setProduct" Content="Set price" HorizontalAlignment="Left" Margin="402,320,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_setProduct_Click"/>
+                    <Label Content="Product name" HorizontalAlignment="Left" Margin="300,244,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Button x:Name="btn_getProduct" Content="Get price" HorizontalAlignment="Left" Margin="402,102,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_getProduct_Click"/>
+                    <Button x:Name="btn_setProduct" Content="Set price" HorizontalAlignment="Left" Margin="402,309,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_setProduct_Click"/>
                     <Label x:Name="lbl_warning" Content="" HorizontalAlignment="Left" Margin="284,377,0,0" VerticalAlignment="Top" Width="259"/>
-                    <TextBox x:Name="txt_createName" TextWrapping="Wrap" Margin="22,73,644,324"/>
-                    <TextBox x:Name="txt_createPrice" TextWrapping="Wrap" Margin="22,135,644,262"/>
-                    <TextBox x:Name="txt_createStock" TextWrapping="Wrap" Margin="22,198,644,199"/>
-                    <TextBox x:Name="txt_deleteName" TextWrapping="Wrap" Margin="22,349,644,48"/>
-                    <TextBox x:Name="txt_getPriceName" TextWrapping="Wrap" Margin="308,73,358,324"/>
+                    <TextBox x:Name="txt_createName" TextWrapping="Wrap" Margin="22,70,644,327"/>
+                    <TextBox x:Name="txt_createPrice" TextWrapping="Wrap" Margin="22,129,644,268"/>
+                    <TextBox x:Name="txt_createStock" TextWrapping="Wrap" Margin="22,191,644,206"/>
+                    <TextBox x:Name="txt_deleteName" TextWrapping="Wrap" Margin="22,339,644,58"/>
+                    <TextBox x:Name="txt_getPriceName" TextWrapping="Wrap" Margin="308,68,358,329"/>
                     <TextBox x:Name="txt_setPriceName" TextWrapping="Wrap" Margin="308,215,358,181"/>
-                    <TextBox x:Name="txt_setPricePrice" TextWrapping="Wrap" Margin="308,281,358,115"/>
+                    <TextBox x:Name="txt_setPricePrice" TextWrapping="Wrap" Margin="308,272,358,124"/>
                     <Label Content="Buy Product Stock" HorizontalAlignment="Left" Margin="603,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
                     <Label Content="Product name" HorizontalAlignment="Left" Margin="603,46,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBox x:Name="txt_setStockName" TextWrapping="Wrap" Margin="610,73,56,324"/>
@@ -44,15 +44,23 @@
                     <Label Content="Amount ordered" HorizontalAlignment="Left" Margin="603,112,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBox x:Name="txt_setStockAmount" TextWrapping="Wrap" Margin="610,143,56,254"/>
                     <Label Content="View Product Stock" HorizontalAlignment="Left" Margin="603,247,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="603,288,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <TextBox x:Name="txt_getStockName" TextWrapping="Wrap" Margin="613,314,53,83"/>
-                    <Button x:Name="btn_getStock_Copy" Content="View stock" HorizontalAlignment="Left" Margin="695,362,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="89" Click="btn_getStock_Copy_Click"/>
+                    <Label Content="Product name" HorizontalAlignment="Left" Margin="603,284,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="txt_getStockName" TextWrapping="Wrap" Margin="613,310,53,87"/>
+                    <Button x:Name="btn_getStock_Copy" Content="View stock" HorizontalAlignment="Left" Margin="695,351,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="89" Click="btn_getStock_Copy_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Products list">
                 <Grid x:Name="grid" Background="#FFE5E5E5">
-                    <Label Content="Product List" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <ListView x:Name="productsList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,45,10,10">
+                    <Label Content="Product List" HorizontalAlignment="Left" Margin="427,9,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <ListView x:Name="productsList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="427,45,10,10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label Content="Product Warnings (Low Stock)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <ListView x:Name="productsListLowStock" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,45,429,10">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn/>
@@ -67,7 +75,7 @@
                     <Label Content="User's username" HorizontalAlignment="Left" Margin="19,46,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBox x:Name="txt_applyLoyaltyUsername" TextWrapping="Wrap" Margin="22,73,644,324"/>
                     <Button x:Name="btn_applyLoyalty" Content="Apply" HorizontalAlignment="Left" Margin="116,109,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_applyLoyalty_Click"/>
-                    <Label x:Name="lbl_loyaltyWarning" Content="" HorizontalAlignment="Left" Margin="255,365,0,0" VerticalAlignment="Top" Width="311" Height="38"/>
+                    <Label x:Name="lbl_loyaltyWarning" Content="" HorizontalAlignment="Left" Margin="100,358,0,0" VerticalAlignment="Top" Width="311" Height="38"/>
                     <Label Content="Apply loyalty card" HorizontalAlignment="Left" Margin="309,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
                     <Label Content="User's username" HorizontalAlignment="Left" Margin="309,47,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBox x:Name="txt_removeLoyaltyUsername" TextWrapping="Wrap" Margin="309,73,357,324"/>
@@ -84,14 +92,43 @@
             </TabItem>
             <TabItem Header="Users">
                 <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="87*"/>
-                        <ColumnDefinition Width="707*"/>
-                    </Grid.ColumnDefinitions>
+                    <Label Content="Delete User" HorizontalAlignment="Left" Margin="19,15,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label Content="Username" HorizontalAlignment="Left" Margin="19,46,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="txt_deleteUsername" TextWrapping="Wrap" Margin="27,72,639,325"/>
+                    <Button x:Name="btn_deleteUsername" Content="Delete" HorizontalAlignment="Left" Margin="118,112,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_deleteUsername_Click"/>
+                    <ListView x:Name="userList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="473,85,10,10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label Content="All users" HorizontalAlignment="Left" Margin="473,31,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label x:Name="lbl_userWarning" Content="" HorizontalAlignment="Left" Margin="105,358,0,0" VerticalAlignment="Top" Width="311" Height="38"/>
+                    <Button x:Name="btn_logout" Content="Log out" HorizontalAlignment="Left" Margin="706,15,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_logout_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Store Performance">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Get past transaction" HorizontalAlignment="Left" Margin="19,15,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label Content="All transactions" HorizontalAlignment="Left" Margin="442,15,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <ListView x:Name="transactionList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="442,59,10,10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label x:Name="lbl_transWarning" Content="" HorizontalAlignment="Left" Margin="105,358,0,0" VerticalAlignment="Top" Width="311" Height="38"/>
+                    <ListView x:Name="userTransactionList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="19,59,482,10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
             </TabItem>
         </TabControl>
-
-
     </Grid>
 </Page>

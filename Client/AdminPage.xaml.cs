@@ -2,21 +2,12 @@
 using InventoryControlService;
 using LoyaltyCardService;
 using PriceControlService;
+using ReportAndAnalysisService;
 using ServiceDiscovery;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SharedModels;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using UserManagementService;
 
 namespace Client
@@ -27,12 +18,18 @@ namespace Client
     public partial class AdminPage : Page
     {
         ServiceRegistry serviceRegistry;
-        public AdminPage(ServiceRegistry serviceRegistryPar)
+        UserModel currentUser;
+        public AdminPage(ServiceRegistry serviceRegistryPar, UserModel currentUserPar)
         {
             InitializeComponent();
             serviceRegistry = serviceRegistryPar;
+            currentUser = currentUserPar;
             ProductListSetup();
+            ProductListLowStockSetup();
             LoyaltyUserListSetup();
+            AllUsersListSetup();
+            AllTransactionsListSetup();
+            UserTransactionListSetup();
         }
 
         public async void ProductListSetup()
@@ -58,6 +55,29 @@ namespace Client
             }
         }
 
+        public async void ProductListLowStockSetup()
+        {
+            var service = serviceRegistry.GetService<IInventoryControlService>();
+            var products = await service.GenerateWarnings();
+
+            // Create GridView to define columns
+            var gridView = new GridView();
+
+            // Define columns
+            gridView.Columns.Add(new GridViewColumn { Header = "Name", DisplayMemberBinding = new Binding("Name"), Width = 100 });
+            gridView.Columns.Add(new GridViewColumn { Header = "Price", DisplayMemberBinding = new Binding("Price"), Width = 100 });
+            gridView.Columns.Add(new GridViewColumn { Header = "Stock", DisplayMemberBinding = new Binding("Stock"), Width = 100 });
+
+            // Set GridView as loyaltyList view
+            productsListLowStock.View = gridView;
+
+            // Add products to the loyaltyList
+            foreach (var product in products)
+            {
+                productsListLowStock.Items.Add(new { Name = product.Name, Price = product.Price, Stock = product.Stock });
+            }
+        }
+
         private async void LoyaltyUserListSetup()
         {
             var userService = serviceRegistry.GetService<IUserManagementService>();
@@ -73,7 +93,67 @@ namespace Client
 
             foreach (var user in users)
             {
-                loyaltyList.Items.Add(new { Username = user.Username, IsAdmin = user.IsAdmin, HaveLoyaltyCard = user.HaveLoyaltyCard });
+                if (user.HaveLoyaltyCard)
+                    loyaltyList.Items.Add(new { Username = user.Username, IsAdmin = user.IsAdmin, HaveLoyaltyCard = user.HaveLoyaltyCard });
+            }
+        }
+        private async void AllUsersListSetup()
+        {
+            var userService = serviceRegistry.GetService<IUserManagementService>();
+            var users = await userService.GetAllUsers();
+
+            var userGridView = new GridView();
+
+            userGridView.Columns.Add(new GridViewColumn { Header = "Username", DisplayMemberBinding = new Binding("Username") });
+            userGridView.Columns.Add(new GridViewColumn { Header = "Is Admin", DisplayMemberBinding = new Binding("IsAdmin") });
+            userGridView.Columns.Add(new GridViewColumn { Header = "Has Loyalty Card", DisplayMemberBinding = new Binding("HaveLoyaltyCard") });
+
+            userList.View = userGridView;
+
+            foreach (var user in users)
+            {
+                userList.Items.Add(new { Username = user.Username, IsAdmin = user.IsAdmin, HaveLoyaltyCard = user.HaveLoyaltyCard });
+            }
+        }
+
+        private async void AllTransactionsListSetup()
+        {
+            var service = serviceRegistry.GetService<IReportAndAnalysisService>();
+            var transactions = await service.StoreAnalysis();
+
+            var userGridView = new GridView();
+
+            userGridView.Columns.Add(new GridViewColumn { Header = "User", DisplayMemberBinding = new Binding("User.Username") });
+            userGridView.Columns.Add(new GridViewColumn { Header = "Product", DisplayMemberBinding = new Binding("Product") });
+            userGridView.Columns.Add(new GridViewColumn { Header = "Amount", DisplayMemberBinding = new Binding("Amount") });
+            userGridView.Columns.Add(new GridViewColumn { Header = "Buy Now Pay Later", DisplayMemberBinding = new Binding("BuyNowPayLater") });
+
+            transactionList.View = userGridView;
+
+            foreach (var transaction in transactions)
+            {
+                transactionList.Items.Add(new { Username = transaction.User.Username, Product = transaction.Product, Amount = transaction.Amount, BNPL = transaction.BuyNowPayLater });
+            }
+        }
+
+        private async void UserTransactionListSetup()
+        {
+            var service = serviceRegistry.GetService<IReportAndAnalysisService>();
+            var transactions = await service.StoreAnalysis();
+
+            var userGridView = new GridView();
+
+            userGridView.Columns.Add(new GridViewColumn { Header = "User", DisplayMemberBinding = new Binding("User.Username") });
+            userGridView.Columns.Add(new GridViewColumn { Header = "Product", DisplayMemberBinding = new Binding("Product") });
+            userGridView.Columns.Add(new GridViewColumn { Header = "Amount", DisplayMemberBinding = new Binding("Amount") });
+            userGridView.Columns.Add(new GridViewColumn { Header = "Buy Now Pay Later", DisplayMemberBinding = new Binding("BuyNowPayLater") });
+
+            userTransactionList.View = userGridView;
+
+            foreach (var transaction in transactions)
+            {
+                if (transaction.User.Username == currentUser.Username)
+                    userTransactionList.Items.Add(new { Username = transaction.User.Username, Product = transaction.Product, Amount = transaction.Amount, BNPL = transaction.BuyNowPayLater });
             }
         }
 
@@ -94,6 +174,8 @@ namespace Client
 
             productsList.Items.Clear();
             ProductListSetup();
+            productsListLowStock.Items.Clear();
+            ProductListLowStockSetup();
         }
 
         private async void btn_delete_Click(object sender, RoutedEventArgs e)
@@ -109,6 +191,8 @@ namespace Client
 
             productsList.Items.Clear();
             ProductListSetup();
+            productsListLowStock.Items.Clear();
+            ProductListLowStockSetup();
         }
 
         private async void btn_getProduct_Click(object sender, RoutedEventArgs e)
@@ -124,6 +208,8 @@ namespace Client
 
             productsList.Items.Clear();
             ProductListSetup();
+            productsListLowStock.Items.Clear();
+            ProductListLowStockSetup();
         }
 
         private async void btn_setProduct_Click(object sender, RoutedEventArgs e)
@@ -141,6 +227,8 @@ namespace Client
 
             productsList.Items.Clear();
             ProductListSetup();
+            productsListLowStock.Items.Clear();
+            ProductListLowStockSetup();
         }
 
         private async void btn_setStock_Click(object sender, RoutedEventArgs e)
@@ -158,6 +246,8 @@ namespace Client
 
             productsList.Items.Clear();
             ProductListSetup();
+            productsListLowStock.Items.Clear();
+            ProductListLowStockSetup();
         }
 
         private async void btn_getStock_Copy_Click(object sender, RoutedEventArgs e)
@@ -173,6 +263,8 @@ namespace Client
 
             productsList.Items.Clear();
             ProductListSetup();
+            productsListLowStock.Items.Clear();
+            ProductListLowStockSetup();
         }
 
         private async void btn_applyLoyalty_Click(object sender, RoutedEventArgs e)
@@ -187,7 +279,7 @@ namespace Client
             txt_applyLoyaltyUsername.Text = "";
 
             loyaltyList.Items.Clear();
-            ProductListSetup();
+            LoyaltyUserListSetup();
         }
 
         private async void btn_removeLoyalty_Click(object sender, RoutedEventArgs e)
@@ -202,7 +294,27 @@ namespace Client
             txt_removeLoyaltyUsername.Text = "";
 
             loyaltyList.Items.Clear();
-            ProductListSetup();
+            LoyaltyUserListSetup();
+        }
+
+        private async void btn_deleteUsername_Click(object sender, RoutedEventArgs e)
+        {
+            string username = txt_deleteUsername.Text;
+
+            var service = serviceRegistry.GetService<IUserManagementService>();
+            await service.DeleteUser(username);
+
+            lbl_userWarning.Content = $"{username} successfully deleted";
+
+            txt_deleteUsername.Text = "";
+
+            userList.Items.Clear();
+            AllUsersListSetup();
+        }
+
+        private void btn_logout_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

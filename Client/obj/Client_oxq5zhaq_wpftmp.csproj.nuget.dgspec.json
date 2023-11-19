@@ -1,0 +1,818 @@
+{
+  "format": 1,
+  "restore": {
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\Client\\Client.csproj": {}
+  },
+  "projects": {
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\Client\\Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\Client\\Client.csproj",
+        "projectName": "Client",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\Client\\Client.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceManagement\\ServiceManagement.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceManagement\\ServiceManagement.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectName": "DataAccessLayer",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj",
+        "projectName": "FinanceApprovalService",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\InventoryControlService\\InventoryControlService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\InventoryControlService\\InventoryControlService.csproj",
+        "projectName": "InventoryControlService",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\InventoryControlService\\InventoryControlService.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\InventoryControlService\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\LoyaltyCardService\\LoyaltyCardService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\LoyaltyCardService\\LoyaltyCardService.csproj",
+        "projectName": "LoyaltyCardService",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\LoyaltyCardService\\LoyaltyCardService.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\LoyaltyCardService\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PriceControlService\\PriceControlService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PriceControlService\\PriceControlService.csproj",
+        "projectName": "PriceControlService",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PriceControlService\\PriceControlService.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PriceControlService\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PurchaseManagementService\\PurchaseManagementService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PurchaseManagementService\\PurchaseManagementService.csproj",
+        "projectName": "PurchaseManagementService",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PurchaseManagementService\\PurchaseManagementService.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PurchaseManagementService\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ReportAndAnalysisService\\ReportAndAnalysisService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ReportAndAnalysisService\\ReportAndAnalysisService.csproj",
+        "projectName": "ReportAndAnalysisService",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ReportAndAnalysisService\\ReportAndAnalysisService.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ReportAndAnalysisService\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj",
+        "projectName": "ServiceDiscovery",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceManagement\\ServiceManagement.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceManagement\\ServiceManagement.csproj",
+        "projectName": "ServiceManagement",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceManagement\\ServiceManagement.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceManagement\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\FinanceApprovalService\\FinanceApprovalService.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\InventoryControlService\\InventoryControlService.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\InventoryControlService\\InventoryControlService.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\LoyaltyCardService\\LoyaltyCardService.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\LoyaltyCardService\\LoyaltyCardService.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PriceControlService\\PriceControlService.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PriceControlService\\PriceControlService.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PurchaseManagementService\\PurchaseManagementService.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\PurchaseManagementService\\PurchaseManagementService.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ReportAndAnalysisService\\ReportAndAnalysisService.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ReportAndAnalysisService\\ReportAndAnalysisService.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\UserManagementService\\UserManagementService.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\UserManagementService\\UserManagementService.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj",
+        "projectName": "SharedModels",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\UserManagementService\\UserManagementService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\UserManagementService\\UserManagementService.csproj",
+        "projectName": "UserManagementService",
+        "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\UserManagementService\\UserManagementService.csproj",
+        "packagesPath": "C:\\Users\\matti\\.nuget\\packages\\",
+        "outputPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\UserManagementService\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\matti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\DataAccessLayer\\DataAccessLayer.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\ServiceDiscovery\\ServiceDiscovery.csproj"
+              },
+              "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj": {
+                "projectPath": "X:\\Library\\Documents\\repos\\DE-Store Business Management System\\SharedModels\\SharedModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

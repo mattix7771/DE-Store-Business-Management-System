@@ -7,7 +7,21 @@
       mc:Ignorable="d" 
       Title="CustomerPage">
 
-    <Grid Background="White" Height="450" Width="800">
-        
+    <Grid Background="#FFE5E5E5" Height="450" Width="800">
+        <Label Content="Create Product" HorizontalAlignment="Left" Margin="19,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Label Content="Product name" HorizontalAlignment="Left" Margin="19,47,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="txt_productName" TextWrapping="Wrap" Margin="22,73,644,347"/>
+        <Label Content="Product amount" HorizontalAlignment="Left" Margin="19,129,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="txt_productAmount" TextWrapping="Wrap" Margin="22,155,644,265"/>
+        <Button x:Name="btn_purchase" Content="Purchase" HorizontalAlignment="Left" Margin="119,233,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_purchase_Click"/>
+        <Label Content="Product List" HorizontalAlignment="Left" Margin="315,27,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <ListView x:Name="productsList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="315,74,10,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <CheckBox x:Name="check_BNPL" Content="Buy not pay later" HorizontalAlignment="Left" Margin="89,198,0,0" VerticalAlignment="Top" IsChecked="False" UseLayoutRounding="False" FlowDirection="RightToLeft"/>
     </Grid>
 </Page>

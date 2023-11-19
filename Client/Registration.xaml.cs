@@ -19,26 +19,26 @@ namespace Client
             serviceRegistry = serviceRegistryPar;
         }
 
-        private void btn_regSubmit(object sender, RoutedEventArgs e)
+        private async void btn_regSubmit(object sender, RoutedEventArgs e)
         {
             string username = txt_username.Text;
             string password = txt_password.Text;
-            bool isAdmin = check_isAdmin.IsChecked.Value;
+            bool isAdmin = check_isAdmin.IsChecked == true? true: false;
 
-            var userManagementService = serviceRegistry.GetService<IUserManagementService>();
-            userManagementService.CreateUser(isAdmin, username, password, false);
+            var service = serviceRegistry.GetService<IUserManagementService>();
+            await service.CreateUser(isAdmin, username, password, false);
 
-            var currentUser = userManagementService.GetUser(username);
+            var currentUser = await service.GetUser(username);
             MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 
-            if (currentUser.Result.IsAdmin)
+            if (currentUser.IsAdmin)
             {
-                var adminPage = new AdminPage(serviceRegistry);
+                var adminPage = new AdminPage(serviceRegistry, currentUser);
                 mw.Content = adminPage;
             }
             else
             {
-                var customerPage = new CustomerPage(serviceRegistry);
+                var customerPage = new CustomerPage(serviceRegistry, currentUser);
                 mw.Content = customerPage;
             }
         }

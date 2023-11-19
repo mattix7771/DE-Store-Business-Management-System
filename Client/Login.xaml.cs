@@ -42,12 +42,12 @@ namespace Client
 
                     if (currentUser.IsAdmin)
                     {
-                        var adminPage = new AdminPage(serviceRegistry);
+                        var adminPage = new AdminPage(serviceRegistry, currentUser);
                         mw.Content = adminPage;
                     }
                     else
                     {
-                        var customerPage = new CustomerPage(serviceRegistry);
+                        var customerPage = new CustomerPage(serviceRegistry, currentUser);
                         mw.Content = customerPage;
                     }
                 }
