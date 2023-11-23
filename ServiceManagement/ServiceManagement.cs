@@ -12,7 +12,7 @@ namespace ServiceManagement
 {
     public class ServiceManagement
     {
-        public async Task databaseInitialisation(ServiceRegistry serviceRegistry)
+        public async Task ServiceInitialisation(ServiceRegistry serviceRegistry)
         {
 
         // Database Initialisation

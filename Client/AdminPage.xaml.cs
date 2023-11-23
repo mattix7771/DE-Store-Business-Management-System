@@ -157,109 +157,83 @@ namespace Client
             }
         }
 
-        private async void btn_create_Click(object sender, RoutedEventArgs e)
+        private async void btn_Submit_Click(object sender, RoutedEventArgs e)
         {
-            string productName = txt_createName.Text;
-            string productPrice = txt_createPrice.Text;
-            string productStock = txt_createStock.Text;
+            if (radio_Create.IsChecked == true)
+            {
+                string productName = txt_ProductName.Text;
+                string productPrice = txt_createPrice.Text;
+                string productStock = txt_createStock.Text;
 
-            var service = serviceRegistry.GetService<IPriceControl>();
-            await service.SetProduct(productName, double.Parse(productPrice), int.Parse(productStock));
+                var service = serviceRegistry.GetService<IPriceControl>();
+                await service.SetProduct(productName, double.Parse(productPrice), int.Parse(productStock));
 
-            lbl_warning.Content = $"Product {productName} added successfully";
+                lbl_warning.Content = $"Product {productName} added successfully";
 
-            txt_createName.Text = "";
-            txt_createPrice.Text = "";
-            txt_createStock.Text = "";
+                txt_ProductName.Text = "";
+                txt_createPrice.Text = "";
+                txt_createStock.Text = "";
+            }
+            else if (radio_Delete.IsChecked == true)
+            {
+                string productName = txt_ProductName.Text;
 
-            productsList.Items.Clear();
-            ProductListSetup();
-            productsListLowStock.Items.Clear();
-            ProductListLowStockSetup();
-        }
+                var service = serviceRegistry.GetService<IInventoryControlService>();
+                await service.DeleteProduct(productName);
 
-        private async void btn_delete_Click(object sender, RoutedEventArgs e)
-        {
-            string productName = txt_deleteName.Text;
+                lbl_warning.Content = $"Product {productName} deleted successfully";
 
-            var service = serviceRegistry.GetService<IInventoryControlService>();
-            await service.DeleteProduct(productName);
+                txt_ProductName.Text = "";
+            }
+            else if (radio_SetPrice.IsChecked == true)
+            {
+                string productName = txt_ProductName.Text;
 
-            lbl_warning.Content = $"Product {productName} deleted successfully";
+                var service = serviceRegistry.GetService<IPriceControlService>();
+                double productPrice = await service.GetProductPrice(productName);
 
-            txt_deleteName.Text = "";
+                lbl_warning.Content = $"{productName} price: {productPrice}";
 
-            productsList.Items.Clear();
-            ProductListSetup();
-            productsListLowStock.Items.Clear();
-            ProductListLowStockSetup();
-        }
+                txt_ProductName.Text = "";
+            }
+            else if (radio_GetPrice.IsChecked == true)
+            {
+                string productName = txt_ProductName.Text;
+                string productPrice = txt_setPricePrice.Text;
 
-        private async void btn_getProduct_Click(object sender, RoutedEventArgs e)
-        {
-            string productName = txt_getPriceName.Text;
+                var service = serviceRegistry.GetService<IPriceControlService>();
+                await service.SetProductPrice(productName, double.Parse(productPrice));
 
-            var service = serviceRegistry.GetService<IPriceControlService>();
-            double productPrice = await service.GetProductPrice(productName);
+                lbl_warning.Content = $"Price of {productName} changed successfully";
 
-            lbl_warning.Content = $"{productName} price: {productPrice}";
+                txt_ProductName.Text = "";
+                txt_setPricePrice.Text = "";
+            }
+            else if (radio_BuyStock.IsChecked == true)
+            {
+                string productName = txt_ProductName.Text;
+                string amountOrdered = txt_setStockAmount.Text;
 
-            txt_getPriceName.Text = "";
+                var service = serviceRegistry.GetService<IInventoryControlService>();
+                await service.OrderStock(productName, int.Parse(amountOrdered));
 
-            productsList.Items.Clear();
-            ProductListSetup();
-            productsListLowStock.Items.Clear();
-            ProductListLowStockSetup();
-        }
+                lbl_warning.Content = $"{amountOrdered} units of {productName} have been successfully ordered";
 
-        private async void btn_setProduct_Click(object sender, RoutedEventArgs e)
-        {
-            string productName = txt_setPriceName.Text;
-            string productPrice = txt_setPricePrice.Text;
+                txt_ProductName.Text = "";
+                txt_setStockAmount.Text = "";
+            }
+            else if (radio_ViewStock.IsChecked == true)
+            {
+                string productName = txt_ProductName.Text;
 
-            var service = serviceRegistry.GetService<IPriceControlService>();
-            await service.SetProductPrice(productName, double.Parse(productPrice));
+                var service = serviceRegistry.GetService<IInventoryControlService>();
+                int stock = await service.MonitorStock(productName);
 
-            lbl_warning.Content = $"Price of {productName} changed successfully";
+                lbl_warning.Content = $"There are {stock} units of {productName}";
 
-            txt_setPriceName.Text = "";
-            txt_setPricePrice.Text = "";
+                txt_ProductName.Text = "";
+            }
 
-            productsList.Items.Clear();
-            ProductListSetup();
-            productsListLowStock.Items.Clear();
-            ProductListLowStockSetup();
-        }
-
-        private async void btn_setStock_Click(object sender, RoutedEventArgs e)
-        {
-            string productName = txt_setStockName.Text;
-            string amountOrdered = txt_setStockAmount.Text;
-
-            var service = serviceRegistry.GetService<IInventoryControlService>();
-            await service.OrderStock(productName, int.Parse(amountOrdered));
-
-            lbl_warning.Content = $"{amountOrdered} units of {productName} have been successfully ordered";
-
-            txt_setStockName.Text = "";
-            txt_setStockAmount.Text = "";
-
-            productsList.Items.Clear();
-            ProductListSetup();
-            productsListLowStock.Items.Clear();
-            ProductListLowStockSetup();
-        }
-
-        private async void btn_getStock_Copy_Click(object sender, RoutedEventArgs e)
-        {
-            string productName = txt_getStockName.Text;
-
-            var service = serviceRegistry.GetService<IInventoryControlService>();
-            int stock = await service.MonitorStock(productName);
-
-            lbl_warning.Content = $"There are {stock} units of {productName}";
-
-            txt_getStockName.Text = "";
 
             productsList.Items.Clear();
             ProductListSetup();
@@ -315,6 +289,98 @@ namespace Client
         private void btn_logout_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        // Visibility Settings
+        private async void radio_Create_Checked(object sender, RoutedEventArgs e)
+        {
+            lbl_Title.Content = "Create Product";
+            lbl_ProductName.Visibility = Visibility.Visible;
+            lbl_ProductPrice.Visibility = Visibility.Visible;
+            lbl_ProductStock.Visibility = Visibility.Visible;
+            txt_ProductName.Visibility = Visibility.Visible;
+            txt_createPrice.Visibility = Visibility.Visible;
+            txt_createStock.Visibility = Visibility.Visible;
+            btn_Submit.Visibility = Visibility.Visible;
+        }
+
+        private void radio_Create_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lbl_ProductPrice.Visibility = Visibility.Hidden;
+            lbl_ProductStock.Visibility = Visibility.Hidden;
+            txt_createPrice.Visibility = Visibility.Hidden;
+            txt_createStock.Visibility = Visibility.Hidden;
+        }
+
+        private void radio_Delete_Checked(object sender, RoutedEventArgs e)
+        {
+            lbl_Title.Content = "Delete Product";
+            lbl_ProductName.Visibility = Visibility.Visible;
+            txt_ProductName.Visibility = Visibility.Visible;
+            btn_Submit.Visibility = Visibility.Visible;
+        }
+
+        private void radio_Delete_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void radio_SetPrice_Checked(object sender, RoutedEventArgs e)
+        {
+            lbl_Title.Content = "Change Product Price";
+            lbl_NewPrice.Visibility = Visibility.Visible;
+            txt_setPricePrice.Visibility = Visibility.Visible;
+            lbl_ProductName.Visibility = Visibility.Visible;
+            txt_ProductName.Visibility = Visibility.Visible;
+            btn_Submit.Visibility = Visibility.Visible;
+        }
+
+        private void radio_SetPrice_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lbl_NewPrice.Visibility = Visibility.Hidden;
+            txt_setPricePrice.Visibility = Visibility.Hidden;
+        }
+
+        private void radio_GetPrice_Checked(object sender, RoutedEventArgs e)
+        {
+            lbl_Title.Content = "Get Product Price";
+            lbl_ProductName.Visibility = Visibility.Visible;
+            txt_ProductName.Visibility = Visibility.Visible;
+            btn_Submit.Visibility = Visibility.Visible;
+        }
+
+        private void radio_GetPrice_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void radio_BuyStock_Checked(object sender, RoutedEventArgs e)
+        {
+            lbl_Title.Content = "Buy Product Stock";
+            lbl_stockOrdered.Visibility = Visibility.Visible;
+            txt_setStockAmount.Visibility = Visibility.Visible;
+            lbl_ProductName.Visibility = Visibility.Visible;
+            txt_ProductName.Visibility = Visibility.Visible;
+            btn_Submit.Visibility = Visibility.Visible;
+        }
+
+        private void radio_BuyStock_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lbl_stockOrdered.Visibility = Visibility.Hidden;
+            txt_setStockAmount.Visibility = Visibility.Hidden;
+        }
+
+        private void radio_ViewStock_Checked(object sender, RoutedEventArgs e)
+        {
+            lbl_Title.Content = "View Product Stock";
+            lbl_ProductName.Visibility = Visibility.Visible;
+            txt_ProductName.Visibility = Visibility.Visible;
+            btn_Submit.Visibility = Visibility.Visible;
+        }
+
+        private void radio_ViewStock_Unchecked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Client
         {
             InitializeComponent();
             ServiceManagement.ServiceManagement serviceManagement = new ServiceManagement.ServiceManagement();
-            serviceManagement.databaseInitialisation(serviceRegistry);
+            serviceManagement.ServiceInitialisation(serviceRegistry);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

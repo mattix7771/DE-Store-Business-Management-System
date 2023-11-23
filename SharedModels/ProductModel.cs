@@ -7,17 +7,13 @@ public class ProductModel
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    //[BsonElement("Id")]
     private ObjectId _id;
     public ObjectId Id { get => _id; set => _id = value; }
 
-    //[BsonElement("Name")]
     private string _name;
     public string Name { get => _name; set => _name = value; }
-    //[BsonElement("Price")]
     private double _price;
     public double Price { get => _price; set => _price = value; }
-    //[BsonElement("Stock")]
     private int _stock;
     public int Stock { get => _stock; set => _stock = value; }
 

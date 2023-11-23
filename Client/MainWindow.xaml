@@ -6,10 +6,29 @@
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
         Title="DE-Store Business Management System" Height="485" Width="815">
-    <Grid >
-        <Label Content="DE-Store Business Management System" Margin="204,36,204,330" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
-        <Button x:Name="btnRegister" Content="Register" Margin="145,149,485,217" Click="Register_Click" FontWeight="Bold" FontSize="16"/>
-        <Button x:Name="btnLogIn" Content="Log in" Margin="475,149,155,217" Click="Button_Click" FontWeight="Bold" FontSize="16"/>
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#FFE5E5E5">
+        <Border BorderBrush="Black" BorderThickness="1" Margin="170,91,170,208"/>
+        <Label Content="DE-Store Business Management System" Margin="204,36,204,383" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <Button x:Name="btnRegister" Content="Register" Margin="242,134,437,282" Click="Register_Click" FontWeight="Bold" FontSize="16" />
+        <Button x:Name="btnLogIn" Content="Log in" Margin="445,131,234,282" Click="Button_Click" FontWeight="Bold" FontSize="16"/>
 
     </Grid>
 </Window>

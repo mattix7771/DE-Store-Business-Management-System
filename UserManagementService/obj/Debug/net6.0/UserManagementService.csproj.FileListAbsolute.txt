@@ -2,7 +2,11 @@ X:\Library\Documents\repos\DE-Store Business Management System\UserManagementSer
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\UserManagementService.dll
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\UserManagementService.pdb
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\DataAccessLayer.dll
+X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\ServiceDiscovery.dll
+X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\SharedModels.dll
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\DataAccessLayer.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\ServiceDiscovery.pdb
+X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\SharedModels.pdb
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\obj\Debug\net6.0\UserManagementService.csproj.AssemblyReference.cache
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\obj\Debug\net6.0\UserManagementService.GeneratedMSBuildEditorConfig.editorconfig
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\obj\Debug\net6.0\UserManagementService.AssemblyInfoInputs.cache
@@ -13,7 +17,3 @@ X:\Library\Documents\repos\DE-Store Business Management System\UserManagementSer
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\obj\Debug\net6.0\refint\UserManagementService.dll
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\obj\Debug\net6.0\UserManagementService.pdb
 X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\obj\Debug\net6.0\ref\UserManagementService.dll
-X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\SharedModels.dll
-X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\SharedModels.pdb
-X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\ServiceDiscovery.dll
-X:\Library\Documents\repos\DE-Store Business Management System\UserManagementService\bin\Debug\net6.0\ServiceDiscovery.pdb

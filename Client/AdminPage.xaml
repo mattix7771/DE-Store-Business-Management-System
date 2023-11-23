@@ -7,6 +7,23 @@
       mc:Ignorable="d" 
       Title="AdminPage">
 
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid Background="White" Height="450" Width="800">
         <TabControl>
             <TabItem Header="Products">
@@ -14,39 +31,26 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Create Product" HorizontalAlignment="Left" Margin="19,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Delete Product" HorizontalAlignment="Left" Margin="19,278,0,113" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="19,43,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Product price" HorizontalAlignment="Left" Margin="19,101,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Product stock" HorizontalAlignment="Left" Margin="19,162,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="19,314,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Button x:Name="btn_create" Content="Create" HorizontalAlignment="Left" Margin="115,227,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_create_Click"/>
-                    <Button x:Name="btn_delete" Content="Delete" HorizontalAlignment="Left" Margin="115,374,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_delete_Click"/>
-                    <Label Content="Get Product Price" HorizontalAlignment="Left" Margin="300,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="300,41,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Set Product Price" HorizontalAlignment="Left" Margin="300,157,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="300,188,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="300,244,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Button x:Name="btn_getProduct" Content="Get price" HorizontalAlignment="Left" Margin="402,102,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_getProduct_Click"/>
-                    <Button x:Name="btn_setProduct" Content="Set price" HorizontalAlignment="Left" Margin="402,309,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_setProduct_Click"/>
-                    <Label x:Name="lbl_warning" Content="" HorizontalAlignment="Left" Margin="284,377,0,0" VerticalAlignment="Top" Width="259"/>
-                    <TextBox x:Name="txt_createName" TextWrapping="Wrap" Margin="22,70,644,327"/>
-                    <TextBox x:Name="txt_createPrice" TextWrapping="Wrap" Margin="22,129,644,268"/>
-                    <TextBox x:Name="txt_createStock" TextWrapping="Wrap" Margin="22,191,644,206"/>
-                    <TextBox x:Name="txt_deleteName" TextWrapping="Wrap" Margin="22,339,644,58"/>
-                    <TextBox x:Name="txt_getPriceName" TextWrapping="Wrap" Margin="308,68,358,329"/>
-                    <TextBox x:Name="txt_setPriceName" TextWrapping="Wrap" Margin="308,215,358,181"/>
-                    <TextBox x:Name="txt_setPricePrice" TextWrapping="Wrap" Margin="308,272,358,124"/>
-                    <Label Content="Buy Product Stock" HorizontalAlignment="Left" Margin="603,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="603,46,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <TextBox x:Name="txt_setStockName" TextWrapping="Wrap" Margin="610,73,56,324"/>
-                    <Button x:Name="btn_setStock" Content="Buy stock" HorizontalAlignment="Left" Margin="695,186,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_setStock_Click"/>
-                    <Label Content="Amount ordered" HorizontalAlignment="Left" Margin="603,112,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <TextBox x:Name="txt_setStockAmount" TextWrapping="Wrap" Margin="610,143,56,254"/>
-                    <Label Content="View Product Stock" HorizontalAlignment="Left" Margin="603,247,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                    <Label Content="Product name" HorizontalAlignment="Left" Margin="603,284,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <TextBox x:Name="txt_getStockName" TextWrapping="Wrap" Margin="613,310,53,87"/>
-                    <Button x:Name="btn_getStock_Copy" Content="View stock" HorizontalAlignment="Left" Margin="695,351,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="89" Click="btn_getStock_Copy_Click"/>
+                    <Label x:Name="lbl_ProductName" Content="Product name" HorizontalAlignment="Left" Margin="372,131,0,0" VerticalAlignment="Top" FontWeight="Bold" Visibility="Hidden"/>
+                    <Label x:Name="lbl_ProductPrice" Content="Product price" HorizontalAlignment="Left" Margin="374,191,0,0" VerticalAlignment="Top" FontWeight="Bold" Visibility="Hidden"/>
+                    <Label x:Name="lbl_ProductStock" Content="Product stock" HorizontalAlignment="Left" Margin="374,253,0,0" VerticalAlignment="Top" FontWeight="Bold" Visibility="Hidden"/>
+                    <Label x:Name="lbl_NewPrice" Content="New price" HorizontalAlignment="Left" Margin="374,190,0,0" VerticalAlignment="Top" FontWeight="Bold" Visibility="Hidden"/>
+                    <Label x:Name="lbl_warning" Content="" HorizontalAlignment="Center" Margin="0,363,0,0" VerticalAlignment="Top" Width="470" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="Red"/>
+                    <TextBox x:Name="txt_createPrice" TextWrapping="Wrap" Margin="377,217,289,180" Visibility="Hidden"/>
+                    <TextBox x:Name="txt_createStock" TextWrapping="Wrap" Margin="377,279,289,118" Visibility="Hidden"/>
+                    <TextBox x:Name="txt_setPricePrice" TextWrapping="Wrap" Margin="377,218,289,178" Visibility="Hidden"/>
+                    <Label x:Name="lbl_stockOrdered" Content="Amount ordered" HorizontalAlignment="Left" Margin="374,191,0,0" VerticalAlignment="Top" FontWeight="Bold" Visibility="Hidden"/>
+                    <TextBox x:Name="txt_setStockAmount" TextWrapping="Wrap" Margin="377,218,289,179" Visibility="Hidden"/>
+                    <RadioButton x:Name="radio_Create" Content="Create Product" HorizontalAlignment="Left" Margin="200,142,0,0" VerticalAlignment="Top" Checked="radio_Create_Checked" Unchecked="radio_Create_Unchecked"/>
+                    <RadioButton x:Name="radio_Delete" Content="Delete Product" HorizontalAlignment="Left" Margin="200,162,0,0" VerticalAlignment="Top" Checked="radio_Delete_Checked" Unchecked="radio_Delete_Unchecked"/>
+                    <RadioButton x:Name="radio_SetPrice" Content="Set Product Price" HorizontalAlignment="Left" Margin="200,182,0,0" VerticalAlignment="Top" Checked="radio_SetPrice_Checked" Unchecked="radio_SetPrice_Unchecked"/>
+                    <RadioButton x:Name="radio_GetPrice" Content="Get Product Price" HorizontalAlignment="Left" Margin="200,202,0,0" VerticalAlignment="Top" Checked="radio_GetPrice_Checked" Unchecked="radio_GetPrice_Unchecked"/>
+                    <RadioButton x:Name="radio_BuyStock" Content="Buy Product Stock" HorizontalAlignment="Left" Margin="200,222,0,0" VerticalAlignment="Top" Checked="radio_BuyStock_Checked" Unchecked="radio_BuyStock_Unchecked"/>
+                    <RadioButton x:Name="radio_ViewStock" Content="View Product Stock" HorizontalAlignment="Left" Margin="200,242,0,0" VerticalAlignment="Top" Checked="radio_ViewStock_Checked" Unchecked="radio_ViewStock_Unchecked"/>
+                    <TextBox x:Name="txt_ProductName" TextWrapping="Wrap" Margin="377,157,289,240" Visibility="Hidden"/>
+                    <Button x:Name="btn_Submit" Content="Submit" HorizontalAlignment="Left" Margin="554,321,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_Submit_Click" Visibility="Hidden"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="162,88,162,106"/>
+                    <Label x:Name="lbl_Title" Content="Please select a checkbox" HorizontalAlignment="Center" Margin="0,95,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Products list">
