@@ -7,15 +7,37 @@
       mc:Ignorable="d" 
       Title="Login">
 
-    <Grid Background="White" Height="450" Width="800">
-        <Button Content="Button" HorizontalAlignment="Left" Margin="-106,197,0,0" VerticalAlignment="Top"/>
-        <Label Content="User Login" Margin="332,46,332,360" FontSize="22" FontWeight="Bold"/>
-        <TextBox x:Name="txt_username" TextWrapping="Wrap" Margin="128,123,472,290"/>
-        <TextBox x:Name="txt_password" TextWrapping="Wrap" Margin="128,208,472,205"/>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="128,92,0,0" VerticalAlignment="Top" Width="164" FontWeight="Bold"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="128,177,0,0" VerticalAlignment="Top" Width="164" FontWeight="Bold"/>
-        <Button Content="Submit" Margin="276,267,400,133" FontSize="16" FontWeight="Bold" Click="btn_loginSubmit"/>
-        <Label x:Name="lbl_loginError" Content="" HorizontalAlignment="Center" Margin="0,347,0,0" VerticalAlignment="Top" Width="536" FontSize="16" FontWeight="Bold" HorizontalContentAlignment="Center"/>
 
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#adadad" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#FFE5E5E5" Height="450" Width="800">
+        <Border BorderBrush="Black" BorderThickness="1" Margin="162,88,162,106"/>
+        <Label Content="User Login" Margin="332,46,332,360" FontSize="22" FontWeight="Bold"/>
+        <TextBox x:Name="txt_username" TextWrapping="Wrap" Margin="236,133,364,280"/>
+        <TextBox x:Name="txt_password" TextWrapping="Wrap" Margin="236,218,364,195"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="236,102,0,0" VerticalAlignment="Top" Width="164" FontWeight="Bold"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="236,187,0,0" VerticalAlignment="Top" Width="164" FontWeight="Bold"/>
+        <Button Content="Submit" Margin="384,277,292,123" FontSize="16" FontWeight="Bold" Click="btn_loginSubmit"/>
+        <Label x:Name="lbl_loginError" Content="" HorizontalAlignment="Center" Margin="0,347,0,0" VerticalAlignment="Top" Width="536" FontSize="16" FontWeight="Bold" HorizontalContentAlignment="Center"/>
     </Grid>
 </Page>

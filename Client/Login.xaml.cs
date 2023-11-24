@@ -20,6 +20,11 @@ namespace Client
             serviceRegistry = serviceRegistryPar;
         }
 
+        /// <summary>
+        /// Logic to verify login credentials
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btn_loginSubmit(object sender, RoutedEventArgs e)
         {
             string username = txt_username.Text;
@@ -36,6 +41,10 @@ namespace Client
                     lbl_loginError.Content = "Error - user not found";
                     currentUser = null;
                 }
+                else if (currentUser.Password != password)
+                {
+                    lbl_loginError.Content = "Error - invalid credentials";
+                }   
                 else
                 {
                     MainWindow mw = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
@@ -54,7 +63,6 @@ namespace Client
             }
             catch (Exception ex)
             {
-                // Handle exceptions appropriately
                 lbl_loginError.Content = $"Error: {ex.Message}";
             }
         }

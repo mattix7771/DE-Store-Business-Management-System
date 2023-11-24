@@ -30,12 +30,22 @@ namespace Client
             serviceManagement.ServiceInitialisation(serviceRegistry);
         }
 
+        /// <summary>
+        /// Redirect to login page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var loginPage = new Login(serviceRegistry);
             this.Content = loginPage;
         }
 
+        /// <summary>
+        /// Redirect to registration page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             var registrationPage = new Registration(serviceRegistry);

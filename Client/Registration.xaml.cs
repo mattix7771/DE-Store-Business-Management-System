@@ -11,6 +11,9 @@ namespace Client
     /// </summary>
     public partial class Registration : Page
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         ServiceRegistry serviceRegistry;
 
         public Registration(ServiceRegistry serviceRegistryPar)
@@ -19,6 +22,11 @@ namespace Client
             serviceRegistry = serviceRegistryPar;
         }
 
+        /// <summary>
+        /// Logic for user registration and page redirection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btn_regSubmit(object sender, RoutedEventArgs e)
         {
             string username = txt_username.Text;

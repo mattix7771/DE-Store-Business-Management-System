@@ -5,6 +5,8 @@ using PriceControlService;
 using ReportAndAnalysisService;
 using ServiceDiscovery;
 using SharedModels;
+using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,6 +19,9 @@ namespace Client
     /// </summary>
     public partial class AdminPage : Page
     {
+        /// <summary>
+        /// Setup of registry, lists, and current user
+        /// </summary>
         ServiceRegistry serviceRegistry;
         UserModel currentUser;
         public AdminPage(ServiceRegistry serviceRegistryPar, UserModel currentUserPar)
@@ -32,6 +37,9 @@ namespace Client
             UserTransactionListSetup();
         }
 
+        /// <summary>
+        /// Setup for products list
+        /// </summary>
         public async void ProductListSetup()
         {
             var service = serviceRegistry.GetService<IInventoryControlService>();
@@ -55,6 +63,9 @@ namespace Client
             }
         }
 
+        /// <summary>
+        /// Setup for list of products on low stock
+        /// </summary>
         public async void ProductListLowStockSetup()
         {
             var service = serviceRegistry.GetService<IInventoryControlService>();
@@ -78,6 +89,9 @@ namespace Client
             }
         }
 
+        /// <summary>
+        /// Setup for user list
+        /// </summary>
         private async void LoyaltyUserListSetup()
         {
             var userService = serviceRegistry.GetService<IUserManagementService>();
@@ -97,6 +111,10 @@ namespace Client
                     loyaltyList.Items.Add(new { Username = user.Username, IsAdmin = user.IsAdmin, HaveLoyaltyCard = user.HaveLoyaltyCard });
             }
         }
+
+        /// <summary>
+        /// Setup for all users list
+        /// </summary>
         private async void AllUsersListSetup()
         {
             var userService = serviceRegistry.GetService<IUserManagementService>();
@@ -116,6 +134,9 @@ namespace Client
             }
         }
 
+        /// <summary>
+        /// Setup for all transactions list
+        /// </summary>
         private async void AllTransactionsListSetup()
         {
             var service = serviceRegistry.GetService<IReportAndAnalysisService>();
@@ -136,6 +157,9 @@ namespace Client
             }
         }
 
+        /// <summary>
+        /// Setup for transactions list
+        /// </summary>
         private async void UserTransactionListSetup()
         {
             var service = serviceRegistry.GetService<IReportAndAnalysisService>();
@@ -157,6 +181,11 @@ namespace Client
             }
         }
 
+        /// <summary>
+        /// Logic to verify most system funcitonality
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btn_Submit_Click(object sender, RoutedEventArgs e)
         {
             if (radio_Create.IsChecked == true)
@@ -165,8 +194,16 @@ namespace Client
                 string productPrice = txt_createPrice.Text;
                 string productStock = txt_createStock.Text;
 
-                var service = serviceRegistry.GetService<IPriceControl>();
-                await service.SetProduct(productName, double.Parse(productPrice), int.Parse(productStock));
+                try
+                {
+                    var service = serviceRegistry.GetService<IPriceControl>();
+                    await service.SetProduct(productName, double.Parse(productPrice), int.Parse(productStock));
+                }
+                catch (Exception ex)
+                {
+                    lbl_warning.Content = "Couldn't add product";
+                    return;
+                }
 
                 lbl_warning.Content = $"Product {productName} added successfully";
 
@@ -178,8 +215,16 @@ namespace Client
             {
                 string productName = txt_ProductName.Text;
 
-                var service = serviceRegistry.GetService<IInventoryControlService>();
-                await service.DeleteProduct(productName);
+                try
+                {
+                    var service = serviceRegistry.GetService<IInventoryControlService>();
+                    await service.DeleteProduct(productName);
+                }
+                catch (Exception ex)
+                {
+                    lbl_warning.Content = "Product not found";
+                    return;
+                }
 
                 lbl_warning.Content = $"Product {productName} deleted successfully";
 
@@ -188,34 +233,59 @@ namespace Client
             else if (radio_SetPrice.IsChecked == true)
             {
                 string productName = txt_ProductName.Text;
-
-                var service = serviceRegistry.GetService<IPriceControlService>();
-                double productPrice = await service.GetProductPrice(productName);
-
-                lbl_warning.Content = $"{productName} price: {productPrice}";
-
-                txt_ProductName.Text = "";
-            }
-            else if (radio_GetPrice.IsChecked == true)
-            {
-                string productName = txt_ProductName.Text;
                 string productPrice = txt_setPricePrice.Text;
 
-                var service = serviceRegistry.GetService<IPriceControlService>();
-                await service.SetProductPrice(productName, double.Parse(productPrice));
+                try
+                {
+                    var service = serviceRegistry.GetService<IPriceControlService>();
+                    await service.SetProductPrice(productName, double.Parse(productPrice));
+                }
+                catch (Exception ex)
+                {
+                    lbl_warning.Content = "Product not found";
+                    return;
+                }
 
                 lbl_warning.Content = $"Price of {productName} changed successfully";
 
                 txt_ProductName.Text = "";
                 txt_setPricePrice.Text = "";
             }
+            else if (radio_GetPrice.IsChecked == true)
+            {
+                string productName = txt_ProductName.Text;
+                double productPrice;
+
+                try
+                {
+                    var service = serviceRegistry.GetService<IPriceControlService>();
+                    productPrice = await service.GetProductPrice(productName);
+                }
+                catch (Exception ex)
+                {
+                    lbl_warning.Content = "Product not found";
+                    return;
+                }
+
+                lbl_warning.Content = $"{productName} price: {productPrice}";
+
+                txt_ProductName.Text = "";
+            }
             else if (radio_BuyStock.IsChecked == true)
             {
                 string productName = txt_ProductName.Text;
                 string amountOrdered = txt_setStockAmount.Text;
 
-                var service = serviceRegistry.GetService<IInventoryControlService>();
-                await service.OrderStock(productName, int.Parse(amountOrdered));
+                try
+                {
+                    var service = serviceRegistry.GetService<IInventoryControlService>();
+                    await service.OrderStock(productName, int.Parse(amountOrdered));
+                }
+                catch (Exception ex)
+                {
+                    lbl_warning.Content = "Product not found";
+                    return;
+                }
 
                 lbl_warning.Content = $"{amountOrdered} units of {productName} have been successfully ordered";
 
@@ -225,28 +295,50 @@ namespace Client
             else if (radio_ViewStock.IsChecked == true)
             {
                 string productName = txt_ProductName.Text;
+                int stock;
 
-                var service = serviceRegistry.GetService<IInventoryControlService>();
-                int stock = await service.MonitorStock(productName);
+                try
+                {
+                    var service = serviceRegistry.GetService<IInventoryControlService>();
+                    stock = await service.MonitorStock(productName);
+                }
+                catch (Exception ex)
+                {
+                    lbl_warning.Content = "Product not found";
+                    return;
+                }
 
                 lbl_warning.Content = $"There are {stock} units of {productName}";
 
                 txt_ProductName.Text = "";
             }
 
-
+            // Update lists
             productsList.Items.Clear();
             ProductListSetup();
             productsListLowStock.Items.Clear();
             ProductListLowStockSetup();
         }
 
+        /// <summary>
+        /// Apply loyalty card to user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btn_applyLoyalty_Click(object sender, RoutedEventArgs e)
         {
             string username = txt_applyLoyaltyUsername.Text;
 
-            var service = serviceRegistry.GetService<ILoyaltyCardService>();
-            await service.ApplyLoyaltyCard(username);
+            try
+            {
+                var service = serviceRegistry.GetService<ILoyaltyCardService>();
+                await service.ApplyLoyaltyCard(username);
+            }
+            catch (Exception ex)
+            {
+                lbl_loyaltyWarning.Content = "User not found";
+                return;
+            }
 
             lbl_loyaltyWarning.Content = $"Loyalty card successfully applied to {username}";
 
@@ -256,12 +348,25 @@ namespace Client
             LoyaltyUserListSetup();
         }
 
+        /// <summary>
+        /// Remove loyalty card from user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btn_removeLoyalty_Click(object sender, RoutedEventArgs e)
         {
             string username = txt_removeLoyaltyUsername.Text;
 
-            var service = serviceRegistry.GetService<ILoyaltyCardService>();
-            await service.RemoveLoyaltyCard(username);
+            try
+            {
+                var service = serviceRegistry.GetService<ILoyaltyCardService>();
+                await service.RemoveLoyaltyCard(username);
+            }
+            catch (Exception ex)
+            {
+                lbl_loyaltyWarning.Content = "User not found";
+                return;
+            }
 
             lbl_loyaltyWarning.Content = $"Loyalty card successfully removed from {username}";
 
@@ -271,12 +376,25 @@ namespace Client
             LoyaltyUserListSetup();
         }
 
+        /// <summary>
+        /// Delete user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btn_deleteUsername_Click(object sender, RoutedEventArgs e)
         {
             string username = txt_deleteUsername.Text;
 
-            var service = serviceRegistry.GetService<IUserManagementService>();
-            await service.DeleteUser(username);
+            try
+            {
+                var service = serviceRegistry.GetService<IUserManagementService>();
+                await service.DeleteUser(username);
+            }
+            catch (Exception ex)
+            {
+                lbl_userWarning.Content = "User not found";
+                return;
+            }
 
             lbl_userWarning.Content = $"{username} successfully deleted";
 
@@ -286,13 +404,8 @@ namespace Client
             AllUsersListSetup();
         }
 
-        private void btn_logout_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        // Visibility Settings
-        private async void radio_Create_Checked(object sender, RoutedEventArgs e)
+        // Visibility Settings for all the different forms
+        private void radio_Create_Checked(object sender, RoutedEventArgs e)
         {
             lbl_Title.Content = "Create Product";
             lbl_ProductName.Visibility = Visibility.Visible;

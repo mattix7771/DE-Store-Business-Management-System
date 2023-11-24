@@ -7,6 +7,7 @@
       mc:Ignorable="d" 
       Title="AdminPage">
 
+
     <Page.Resources>
         <Style TargetType="Button">
             <Setter Property="Template">
@@ -18,6 +19,11 @@
                                 CornerRadius="5">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#adadad" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -80,7 +86,7 @@
                     <TextBox x:Name="txt_applyLoyaltyUsername" TextWrapping="Wrap" Margin="22,73,644,324"/>
                     <Button x:Name="btn_applyLoyalty" Content="Apply" HorizontalAlignment="Left" Margin="116,109,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_applyLoyalty_Click"/>
                     <Label x:Name="lbl_loyaltyWarning" Content="" HorizontalAlignment="Left" Margin="100,358,0,0" VerticalAlignment="Top" Width="311" Height="38"/>
-                    <Label Content="Apply loyalty card" HorizontalAlignment="Left" Margin="309,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label Content="Revoke loyalty card" HorizontalAlignment="Left" Margin="309,11,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
                     <Label Content="User's username" HorizontalAlignment="Left" Margin="309,47,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <TextBox x:Name="txt_removeLoyaltyUsername" TextWrapping="Wrap" Margin="309,73,357,324"/>
                     <Button x:Name="btn_removeLoyalty" Content="Remove" HorizontalAlignment="Left" Margin="397,109,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_removeLoyalty_Click"/>
@@ -109,7 +115,6 @@
                     </ListView>
                     <Label Content="All users" HorizontalAlignment="Left" Margin="473,31,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
                     <Label x:Name="lbl_userWarning" Content="" HorizontalAlignment="Left" Margin="105,358,0,0" VerticalAlignment="Top" Width="311" Height="38"/>
-                    <Button x:Name="btn_logout" Content="Log out" HorizontalAlignment="Left" Margin="706,15,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="34" Width="78" Click="btn_logout_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Store Performance">
